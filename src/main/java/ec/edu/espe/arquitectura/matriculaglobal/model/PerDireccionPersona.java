@@ -19,11 +19,13 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
 
+import javax.persistence.TemporalType;
+
 @Entity
 @Table(name = "per_direccion_persona")
 public class PerDireccionPersona implements Serializable {
 
-    private static final long serialVersionUID = 166554L;
+    private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected PerDireccionPersonaPK perDireccionPersonaPK;
     @Column(name = "cod_tipo_direccion", nullable = false, length = 3)
@@ -60,10 +62,6 @@ public class PerDireccionPersona implements Serializable {
     private PerPersona perPersona;
 
     public PerDireccionPersona() {
-    }
-
-    public PerDireccionPersona(PerDireccionPersonaPK perDireccionPersonaPK) {
-        this.perDireccionPersonaPK = perDireccionPersonaPK;
     }
 
     public PerDireccionPersona(int codPersona, short secDireccion) {
@@ -219,7 +217,7 @@ public class PerDireccionPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "[ perDireccionPersonaPK=" + perDireccionPersonaPK + " ]";
+        return "PerDireccionPersona[ perDireccionPersonaPK=" + perDireccionPersonaPK + " ]";
     }
     
 }

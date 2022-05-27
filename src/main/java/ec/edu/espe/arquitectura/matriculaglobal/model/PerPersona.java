@@ -16,15 +16,15 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "per_persona")
-
 public class PerPersona implements Serializable {
 
-    private static final long serialVersionUID = 167667L;
+    private static final long serialVersionUID = 134234L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_persona", nullable = false)
@@ -81,8 +81,12 @@ public class PerPersona implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codPersona")
+    private List<EduNrc> eduNrcList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perPersona")
     private List<PerDireccionPersona> perDireccionPersonaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perPersona")
+    private List<EduMatricula> eduMatriculaList;
     @JoinColumn(name = "cod_pais_nacimiento", referencedColumnName = "cod_pais")
     @ManyToOne
     private GenPais codPaisNacimiento;
@@ -320,12 +324,28 @@ public class PerPersona implements Serializable {
         this.version = version;
     }
 
+    public List<EduNrc> getEduNrcList() {
+        return eduNrcList;
+    }
+
+    public void setEduNrcList(List<EduNrc> eduNrcList) {
+        this.eduNrcList = eduNrcList;
+    }
+
     public List<PerDireccionPersona> getPerDireccionPersonaList() {
         return perDireccionPersonaList;
     }
 
     public void setPerDireccionPersonaList(List<PerDireccionPersona> perDireccionPersonaList) {
         this.perDireccionPersonaList = perDireccionPersonaList;
+    }
+
+    public List<EduMatricula> getEduMatriculaList() {
+        return eduMatriculaList;
+    }
+
+    public void setEduMatriculaList(List<EduMatricula> eduMatriculaList) {
+        this.eduMatriculaList = eduMatriculaList;
     }
 
     public GenPais getCodPaisNacimiento() {

@@ -16,7 +16,8 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -24,7 +25,7 @@ import javax.persistence.*;
 
 public class PerTipoDiscapacidad implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 16565L;
     @Id
     @Column(name = "cod_tipo_discapacidad", nullable = false, length = 8)
     private String codTipoDiscapacidad;

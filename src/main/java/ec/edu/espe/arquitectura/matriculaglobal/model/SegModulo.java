@@ -19,13 +19,12 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "seg_modulo")
 
 public class SegModulo implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1324321L;
     @Id
     @Column(name = "cod_modulo", nullable = false, length = 16)
     private String codModulo;

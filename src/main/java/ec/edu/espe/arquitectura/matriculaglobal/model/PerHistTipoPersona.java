@@ -16,15 +16,14 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "per_hist_tipo_persona")
-
 public class PerHistTipoPersona implements Serializable {
 
-    private static final long serialVersionUID = 132423L;
+    private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected PerHistTipoPersonaPK perHistTipoPersonaPK;
     @Column(name = "fecha_inicio", nullable = false)
@@ -46,13 +45,6 @@ public class PerHistTipoPersona implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(mappedBy = "perHistTipoPersona")
-    private List<EduInscripcionCarrera> eduInscripcionCarreraList;
-    @OneToMany(mappedBy = "perHistTipoPersona")
-    private List<EduAsignacionDocente> eduAsignacionDocenteList;
-    @JoinColumn(name = "cod_institucion_educativa", referencedColumnName = "cod_institucion_educativa")
-    @ManyToOne
-    private EduInstitucionEducativa codInstitucionEducativa;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private PerPersona perPersona;
@@ -61,10 +53,6 @@ public class PerHistTipoPersona implements Serializable {
     private PerTipoPersona perTipoPersona;
 
     public PerHistTipoPersona() {
-    }
-
-    public PerHistTipoPersona(PerHistTipoPersonaPK perHistTipoPersonaPK) {
-        this.perHistTipoPersonaPK = perHistTipoPersonaPK;
     }
 
     public PerHistTipoPersona(int codPersona, String codTipoPersona) {
@@ -143,30 +131,6 @@ public class PerHistTipoPersona implements Serializable {
         this.version = version;
     }
 
-    public List<EduInscripcionCarrera> getEduInscripcionCarreraList() {
-        return eduInscripcionCarreraList;
-    }
-
-    public void setEduInscripcionCarreraList(List<EduInscripcionCarrera> eduInscripcionCarreraList) {
-        this.eduInscripcionCarreraList = eduInscripcionCarreraList;
-    }
-
-    public List<EduAsignacionDocente> getEduAsignacionDocenteList() {
-        return eduAsignacionDocenteList;
-    }
-
-    public void setEduAsignacionDocenteList(List<EduAsignacionDocente> eduAsignacionDocenteList) {
-        this.eduAsignacionDocenteList = eduAsignacionDocenteList;
-    }
-
-    public EduInstitucionEducativa getCodInstitucionEducativa() {
-        return codInstitucionEducativa;
-    }
-
-    public void setCodInstitucionEducativa(EduInstitucionEducativa codInstitucionEducativa) {
-        this.codInstitucionEducativa = codInstitucionEducativa;
-    }
-
     public PerPersona getPerPersona() {
         return perPersona;
     }
@@ -204,7 +168,7 @@ public class PerHistTipoPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "[ perHistTipoPersonaPK=" + perHistTipoPersonaPK + " ]";
+        return "PerHistTipoPersona[ perHistTipoPersonaPK=" + perHistTipoPersonaPK + " ]";
     }
     
 }

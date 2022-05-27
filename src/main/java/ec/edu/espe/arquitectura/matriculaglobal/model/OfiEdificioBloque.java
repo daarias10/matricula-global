@@ -16,7 +16,8 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -146,7 +147,7 @@ public class OfiEdificioBloque implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.matriculaglobal.model.OfiEdificioBloque[ codEdificioBloque=" + codEdificioBloque + " ]";
+        return "OfiEdificioBloque[ codEdificioBloque=" + codEdificioBloque + " ]";
     }
     
 }

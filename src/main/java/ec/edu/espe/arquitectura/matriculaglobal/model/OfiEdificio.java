@@ -16,14 +16,15 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ofi_edificio")
 public class OfiEdificio implements Serializable {
 
-    private static final long serialVersionUID = 18822L;
+    private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "cod_edificio", nullable = false, length = 8)
     private String codEdificio;
@@ -216,7 +217,7 @@ public class OfiEdificio implements Serializable {
 
     @Override
     public String toString() {
-        return "[ codEdificio=" + codEdificio + " ]";
+        return "OfiEdificio[ codEdificio=" + codEdificio + " ]";
     }
     
 }

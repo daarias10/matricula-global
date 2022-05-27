@@ -25,10 +25,13 @@ public class GenError implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    
     @Column(name = "cod_error", nullable = false, length = 5)
     private String codError;
+    
     @Column(name = "titulo", nullable = false, length = 255)
     private String titulo;
+    
     @Column(name = "descripcion", nullable = false, length = 1000)
     private String descripcion;
 
@@ -72,6 +75,7 @@ public class GenError implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        
         if (!(object instanceof GenError)) {
             return false;
         }

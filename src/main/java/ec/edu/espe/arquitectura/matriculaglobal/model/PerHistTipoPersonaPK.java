@@ -18,7 +18,6 @@ package ec.edu.espe.arquitectura.matriculaglobal.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 @Embeddable
 public class PerHistTipoPersonaPK implements Serializable {
 
@@ -76,7 +75,7 @@ public class PerHistTipoPersonaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "[ codPersona=" + codPersona + ", codTipoPersona=" + codTipoPersona + " ]";
+        return "PerHistTipoPersonaPK[ codPersona=" + codPersona + ", codTipoPersona=" + codTipoPersona + " ]";
     }
     
 }

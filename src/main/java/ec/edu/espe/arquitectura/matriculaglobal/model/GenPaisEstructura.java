@@ -16,25 +16,32 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "gen_pais_estructura")
+
 public class GenPaisEstructura implements Serializable {
 
-    private static final long serialVersionUID = 12223L;
+    private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected GenPaisEstructuraPK genPaisEstructuraPK;
+    
     @Column(name = "nombre", nullable = false, length = 64)
     private String nombre;
+    
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
+    
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
+    
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
+    
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais", nullable = false, insertable = false, updatable = false)
@@ -127,6 +134,7 @@ public class GenPaisEstructura implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        
         if (!(object instanceof GenPaisEstructura)) {
             return false;
         }

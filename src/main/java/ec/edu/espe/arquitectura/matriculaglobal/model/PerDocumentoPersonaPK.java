@@ -75,7 +75,7 @@ public class PerDocumentoPersonaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.matriculaglobal.model.PerDocumentoPersonaPK[ codPersona=" + codPersona + ", codTipoDocumento=" + codTipoDocumento + " ]";
+        return "PerDocumentoPersonaPK[ codPersona=" + codPersona + ", codTipoDocumento=" + codTipoDocumento + " ]";
     }
     
 }

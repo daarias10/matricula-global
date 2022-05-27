@@ -28,21 +28,27 @@ public class EduNrc implements Serializable {
     private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected EduNrcPK eduNrcPK;
-    @Column(name = "cupos", nullable = false)
-    private int cupos;
-    @JoinColumn(name = "cod_docente", referencedColumnName = "cod_docente")
-    @ManyToOne
-    private EduAsignacionDocente codDocente;
-    @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false)
+    @Column(name = "cupo_disponible", nullable = false)
+    private short cupoDisponible;
+    @Column(name = "cupo_registrado", nullable = false)
+    private short cupoRegistrado;
+    @Column(name = "nombre", length = 255)
+    private String nombre;
+    @JoinColumns({
+        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false),
+        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
-    private EduMateria codMateria;
+    private EduMateria eduMateria;
     @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false)
     @OneToOne(optional = false)
     private EduPeriodo eduPeriodo;
+    @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false)
+    @ManyToOne(optional = false)
+    private PerPersona codPersona;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "eduNrc")
-    private List<EduMatricula> eduMatriculaList;
+    private List<EduNrcHorario> eduNrcHorarioList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "eduNrc")
-    private List<EduNrcAula> eduNrcAulaList;
+    private List<EduMatriculaNrc> eduMatriculaNrcList;
 
     public EduNrc() {
     }
@@ -51,8 +57,8 @@ public class EduNrc implements Serializable {
         this.eduNrcPK = eduNrcPK;
     }
 
-    public EduNrc(short codNrc, int codPeriodo) {
-        this.eduNrcPK = new EduNrcPK(codNrc, codPeriodo);
+    public EduNrc(short codNrc, int codPeriodo, int codDepartamento, int codMateria) {
+        this.eduNrcPK = new EduNrcPK(codNrc, codPeriodo, codDepartamento, codMateria);
     }
 
     public EduNrcPK getEduNrcPK() {
@@ -63,28 +69,36 @@ public class EduNrc implements Serializable {
         this.eduNrcPK = eduNrcPK;
     }
 
-    public int getCupos() {
-        return cupos;
+    public short getCupoDisponible() {
+        return cupoDisponible;
     }
 
-    public void setCupos(int cupos) {
-        this.cupos = cupos;
+    public void setCupoDisponible(short cupoDisponible) {
+        this.cupoDisponible = cupoDisponible;
     }
 
-    public EduAsignacionDocente getCodDocente() {
-        return codDocente;
+    public short getCupoRegistrado() {
+        return cupoRegistrado;
     }
 
-    public void setCodDocente(EduAsignacionDocente codDocente) {
-        this.codDocente = codDocente;
+    public void setCupoRegistrado(short cupoRegistrado) {
+        this.cupoRegistrado = cupoRegistrado;
     }
 
-    public EduMateria getCodMateria() {
-        return codMateria;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setCodMateria(EduMateria codMateria) {
-        this.codMateria = codMateria;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public EduMateria getEduMateria() {
+        return eduMateria;
+    }
+
+    public void setEduMateria(EduMateria eduMateria) {
+        this.eduMateria = eduMateria;
     }
 
     public EduPeriodo getEduPeriodo() {
@@ -95,20 +109,28 @@ public class EduNrc implements Serializable {
         this.eduPeriodo = eduPeriodo;
     }
 
-    public List<EduMatricula> getEduMatriculaList() {
-        return eduMatriculaList;
+    public PerPersona getCodPersona() {
+        return codPersona;
     }
 
-    public void setEduMatriculaList(List<EduMatricula> eduMatriculaList) {
-        this.eduMatriculaList = eduMatriculaList;
+    public void setCodPersona(PerPersona codPersona) {
+        this.codPersona = codPersona;
     }
 
-    public List<EduNrcAula> getEduNrcAulaList() {
-        return eduNrcAulaList;
+    public List<EduNrcHorario> getEduNrcHorarioList() {
+        return eduNrcHorarioList;
     }
 
-    public void setEduNrcAulaList(List<EduNrcAula> eduNrcAulaList) {
-        this.eduNrcAulaList = eduNrcAulaList;
+    public void setEduNrcHorarioList(List<EduNrcHorario> eduNrcHorarioList) {
+        this.eduNrcHorarioList = eduNrcHorarioList;
+    }
+
+    public List<EduMatriculaNrc> getEduMatriculaNrcList() {
+        return eduMatriculaNrcList;
+    }
+
+    public void setEduMatriculaNrcList(List<EduMatriculaNrc> eduMatriculaNrcList) {
+        this.eduMatriculaNrcList = eduMatriculaNrcList;
     }
 
     @Override

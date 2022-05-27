@@ -25,16 +25,22 @@ public class EduPrerequisito implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    
     @Column(name = "cod_prerequisito", nullable = false)
     private Integer codPrerequisito;
-    @Column(name = "agrupacion_prerequisitos", nullable = false)
-    private int agrupacionPrerequisitos;
-    @JoinColumn(name = "cod_materia_padre", referencedColumnName = "cod_materia", nullable = false)
+    
+    @Column(name = "tipo", nullable = false, length = 3)
+    private String tipo;
+    @JoinColumns({
+        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
+        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
     @ManyToOne(optional = false)
-    private EduMateria codMateriaPadre;
-    @JoinColumn(name = "edu_cod_materia", referencedColumnName = "cod_materia", nullable = false)
+    private EduMateria eduMateria;
+    @JoinColumns({
+        @JoinColumn(name = "cod_materia_prerequisito", referencedColumnName = "cod_materia", nullable = false),
+        @JoinColumn(name = "edu_cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
     @ManyToOne(optional = false)
-    private EduMateria eduCodMateria;
+    private EduMateria eduMateria1;
 
     public EduPrerequisito() {
     }
@@ -51,28 +57,28 @@ public class EduPrerequisito implements Serializable {
         this.codPrerequisito = codPrerequisito;
     }
 
-    public int getAgrupacionPrerequisitos() {
-        return agrupacionPrerequisitos;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setAgrupacionPrerequisitos(int agrupacionPrerequisitos) {
-        this.agrupacionPrerequisitos = agrupacionPrerequisitos;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    public EduMateria getCodMateriaPadre() {
-        return codMateriaPadre;
+    public EduMateria getEduMateria() {
+        return eduMateria;
     }
 
-    public void setCodMateriaPadre(EduMateria codMateriaPadre) {
-        this.codMateriaPadre = codMateriaPadre;
+    public void setEduMateria(EduMateria eduMateria) {
+        this.eduMateria = eduMateria;
     }
 
-    public EduMateria getEduCodMateria() {
-        return eduCodMateria;
+    public EduMateria getEduMateria1() {
+        return eduMateria1;
     }
 
-    public void setEduCodMateria(EduMateria eduCodMateria) {
-        this.eduCodMateria = eduCodMateria;
+    public void setEduMateria1(EduMateria eduMateria1) {
+        this.eduMateria1 = eduMateria1;
     }
 
     @Override
@@ -84,6 +90,7 @@ public class EduPrerequisito implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        
         if (!(object instanceof EduPrerequisito)) {
             return false;
         }

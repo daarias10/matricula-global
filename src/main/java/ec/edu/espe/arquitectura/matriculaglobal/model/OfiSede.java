@@ -16,14 +16,15 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ofi_sede")
 public class OfiSede implements Serializable {
 
-    private static final long serialVersionUID = 1233344L;
+    private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "cod_sede", nullable = false, length = 8)
     private String codSede;
@@ -54,7 +55,7 @@ public class OfiSede implements Serializable {
     public OfiSede(String codSede) {
         this.codSede = codSede;
     }
-    
+
     public String getCodSede() {
         return codSede;
     }
@@ -144,7 +145,6 @@ public class OfiSede implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof OfiSede)) {
             return false;
         }
@@ -157,7 +157,7 @@ public class OfiSede implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.matriculaglobal.model.OfiSede[ codSede=" + codSede + " ]";
+        return "OfiSede[ codSede=" + codSede + " ]";
     }
     
 }

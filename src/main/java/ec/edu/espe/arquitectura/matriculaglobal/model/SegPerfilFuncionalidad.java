@@ -24,7 +24,7 @@ import javax.persistence.*;
 
 public class SegPerfilFuncionalidad implements Serializable {
 
-    private static final long serialVersionUID = 14534L;
+    private static final long serialVersionUID = 12312L;
     @EmbeddedId
     protected SegPerfilFuncionalidadPK segPerfilFuncionalidadPK;
     @Column(name = "aud_usuario", nullable = false, length = 30)
@@ -44,10 +44,6 @@ public class SegPerfilFuncionalidad implements Serializable {
     private SegPerfil segPerfil;
 
     public SegPerfilFuncionalidad() {
-    }
-
-    public SegPerfilFuncionalidad(SegPerfilFuncionalidadPK segPerfilFuncionalidadPK) {
-        this.segPerfilFuncionalidadPK = segPerfilFuncionalidadPK;
     }
 
     public SegPerfilFuncionalidad(String codPerfil, int codFuncionalidad) {

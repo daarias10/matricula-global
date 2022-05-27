@@ -16,15 +16,14 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
 @Embeddable
 public class GenPaisEstructuraPK implements Serializable {
 
-    
     @Column(name = "cod_pais", nullable = false, length = 2)
     private String codPais;
+    
     @Column(name = "nivel", nullable = false)
     private short nivel;
 
@@ -62,6 +61,7 @@ public class GenPaisEstructuraPK implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        
         if (!(object instanceof GenPaisEstructuraPK)) {
             return false;
         }

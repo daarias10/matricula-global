@@ -16,33 +16,44 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "ofi_aula")
 public class OfiAula implements Serializable {
 
-    private static final long serialVersionUID = 123334L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     @Column(name = "cod_aula", nullable = false)
     private Integer codAula;
+    
     @Column(name = "cod_alterno", nullable = false, length = 10)
     private String codAlterno;
+    
     @Column(name = "capacidad", nullable = false)
     private short capacidad;
+    
     @Column(name = "piso", nullable = false)
     private short piso;
+    
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
+    
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
+    
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
+    
     @Column(name = "version", nullable = false)
     private int version;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "ofiAula")
+    private List<EduNrcHorario> eduNrcHorarioList;
     @JoinColumn(name = "cod_edificio", referencedColumnName = "cod_edificio")
     @ManyToOne
     private OfiEdificio codEdificio;
@@ -52,8 +63,6 @@ public class OfiAula implements Serializable {
     @JoinColumn(name = "cod_tipo_aula", referencedColumnName = "cod_tipo_aula")
     @ManyToOne
     private OfiTipoAula codTipoAula;
-    @OneToMany(mappedBy = "codAula")
-    private List<EduNrcAula> eduNrcAulaList;
 
     public OfiAula() {
     }
@@ -126,6 +135,14 @@ public class OfiAula implements Serializable {
         this.version = version;
     }
 
+    public List<EduNrcHorario> getEduNrcHorarioList() {
+        return eduNrcHorarioList;
+    }
+
+    public void setEduNrcHorarioList(List<EduNrcHorario> eduNrcHorarioList) {
+        this.eduNrcHorarioList = eduNrcHorarioList;
+    }
+
     public OfiEdificio getCodEdificio() {
         return codEdificio;
     }
@@ -150,14 +167,6 @@ public class OfiAula implements Serializable {
         this.codTipoAula = codTipoAula;
     }
 
-    public List<EduNrcAula> getEduNrcAulaList() {
-        return eduNrcAulaList;
-    }
-
-    public void setEduNrcAulaList(List<EduNrcAula> eduNrcAulaList) {
-        this.eduNrcAulaList = eduNrcAulaList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -167,6 +176,7 @@ public class OfiAula implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        
         if (!(object instanceof OfiAula)) {
             return false;
         }

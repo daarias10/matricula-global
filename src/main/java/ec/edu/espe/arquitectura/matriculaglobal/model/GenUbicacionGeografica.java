@@ -16,20 +16,24 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "gen_ubicacion_geografica")
 public class GenUbicacionGeografica implements Serializable {
 
-    private static final long serialVersionUID = 123233L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    
     @Column(name = "cod_ubicacion_geo_int", nullable = false)
     private Integer codUbicacionGeoInt;
+    
     @Column(name = "cod_ubicacion_geografica", nullable = false, length = 20)
     private String codUbicacionGeografica;
+    
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
     @Column(name = "codigo_area_telefono", length = 4)
@@ -38,13 +42,17 @@ public class GenUbicacionGeografica implements Serializable {
     private String codigoAlterno;
     @Column(name = "codigo_postal", length = 15)
     private String codigoPostal;
+    
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
+    
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
+    
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
+    
     @Column(name = "version", nullable = false)
     private int version;
     @OneToMany(mappedBy = "codUbicacionGeoInt")
@@ -219,6 +227,7 @@ public class GenUbicacionGeografica implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        
         if (!(object instanceof GenUbicacionGeografica)) {
             return false;
         }

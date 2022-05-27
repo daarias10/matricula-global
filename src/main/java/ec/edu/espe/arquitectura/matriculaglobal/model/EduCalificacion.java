@@ -21,13 +21,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "edu_calificacion")
+
 public class EduCalificacion implements Serializable {
 
-    private static final long serialVersionUID = 132232L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_calificacion", nullable = false)
-    private Integer codCalificacion;
+    private static final long serialVersionUID = 1L;
+    @EmbeddedId
+    protected EduCalificacionPK eduCalificacionPK;
     @Column(name = "nota1", precision = 5, scale = 2)
     private BigDecimal nota1;
     @Column(name = "nota2", precision = 5, scale = 2)
@@ -50,27 +49,35 @@ public class EduCalificacion implements Serializable {
     private BigDecimal nota10;
     @Column(name = "promedio", precision = 5, scale = 2)
     private BigDecimal promedio;
-    @Column(name = "estado", length = 3)
-    private String estado;
     @Column(name = "observacion", length = 25)
     private String observacion;
-    @JoinColumn(name = "cod_inscripcion", referencedColumnName = "cod_matricula", nullable = false)
+    @JoinColumns({
+        @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
+        @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo"),
+        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento"),
+        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia"),
+        @JoinColumn(name = "cod_matricula", referencedColumnName = "cod_matricula", nullable = false, insertable = false, updatable = false),
+        @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona")})
     @ManyToOne(optional = false)
-    private EduMatricula codInscripcion;
+    private EduMatriculaNrc eduMatriculaNrc;
 
     public EduCalificacion() {
     }
 
-    public EduCalificacion(Integer codCalificacion) {
-        this.codCalificacion = codCalificacion;
+    public EduCalificacion(EduCalificacionPK eduCalificacionPK) {
+        this.eduCalificacionPK = eduCalificacionPK;
     }
 
-    public Integer getCodCalificacion() {
-        return codCalificacion;
+    public EduCalificacion(String codMatricula, short codNrc) {
+        this.eduCalificacionPK = new EduCalificacionPK(codMatricula, codNrc);
     }
 
-    public void setCodCalificacion(Integer codCalificacion) {
-        this.codCalificacion = codCalificacion;
+    public EduCalificacionPK getEduCalificacionPK() {
+        return eduCalificacionPK;
+    }
+
+    public void setEduCalificacionPK(EduCalificacionPK eduCalificacionPK) {
+        this.eduCalificacionPK = eduCalificacionPK;
     }
 
     public BigDecimal getNota1() {
@@ -161,14 +168,6 @@ public class EduCalificacion implements Serializable {
         this.promedio = promedio;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
     public String getObservacion() {
         return observacion;
     }
@@ -177,18 +176,18 @@ public class EduCalificacion implements Serializable {
         this.observacion = observacion;
     }
 
-    public EduMatricula getCodInscripcion() {
-        return codInscripcion;
+    public EduMatriculaNrc getEduMatriculaNrc() {
+        return eduMatriculaNrc;
     }
 
-    public void setCodInscripcion(EduMatricula codInscripcion) {
-        this.codInscripcion = codInscripcion;
+    public void setEduMatriculaNrc(EduMatriculaNrc eduMatriculaNrc) {
+        this.eduMatriculaNrc = eduMatriculaNrc;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codCalificacion != null ? codCalificacion.hashCode() : 0);
+        hash += (eduCalificacionPK != null ? eduCalificacionPK.hashCode() : 0);
         return hash;
     }
 
@@ -198,7 +197,7 @@ public class EduCalificacion implements Serializable {
             return false;
         }
         EduCalificacion other = (EduCalificacion) object;
-        if ((this.codCalificacion == null && other.codCalificacion != null) || (this.codCalificacion != null && !this.codCalificacion.equals(other.codCalificacion))) {
+        if ((this.eduCalificacionPK == null && other.eduCalificacionPK != null) || (this.eduCalificacionPK != null && !this.eduCalificacionPK.equals(other.eduCalificacionPK))) {
             return false;
         }
         return true;
@@ -206,7 +205,7 @@ public class EduCalificacion implements Serializable {
 
     @Override
     public String toString() {
-        return "[ codCalificacion=" + codCalificacion + " ]";
+        return "[ eduCalificacionPK=" + eduCalificacionPK + " ]";
     }
     
 }

@@ -24,7 +24,7 @@ import javax.persistence.*;
 
 public class SegRegistroSesion implements Serializable {
 
-    private static final long serialVersionUID = 121321L;
+    private static final long serialVersionUID = 134234L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "secuencia", nullable = false)

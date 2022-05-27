@@ -23,7 +23,7 @@ import javax.persistence.*;
 @Table(name = "per_documento_persona")
 public class PerDocumentoPersona implements Serializable {
 
-    private static final long serialVersionUID = 19922L;
+    private static final long serialVersionUID = 1L;
     @EmbeddedId
     protected PerDocumentoPersonaPK perDocumentoPersonaPK;
     @Column(name = "estado", nullable = false, length = 3)
@@ -60,10 +60,6 @@ public class PerDocumentoPersona implements Serializable {
     private PerTipoDocumento perTipoDocumento;
 
     public PerDocumentoPersona() {
-    }
-
-    public PerDocumentoPersona(PerDocumentoPersonaPK perDocumentoPersonaPK) {
-        this.perDocumentoPersonaPK = perDocumentoPersonaPK;
     }
 
     public PerDocumentoPersona(int codPersona, String codTipoDocumento) {
@@ -203,7 +199,7 @@ public class PerDocumentoPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "[ perDocumentoPersonaPK=" + perDocumentoPersonaPK + " ]";
+        return "PerDocumentoPersona[ perDocumentoPersonaPK=" + perDocumentoPersonaPK + " ]";
     }
     
 }

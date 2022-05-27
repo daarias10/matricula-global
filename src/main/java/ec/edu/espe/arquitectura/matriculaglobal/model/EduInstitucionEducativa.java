@@ -17,12 +17,10 @@ package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
 @Table(name = "edu_institucion_educativa")
-
 public class EduInstitucionEducativa implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,8 +46,6 @@ public class EduInstitucionEducativa implements Serializable {
     @JoinColumn(name = "cod_ubicacion_geo_int", referencedColumnName = "cod_ubicacion_geo_int", nullable = false)
     @ManyToOne(optional = false)
     private GenUbicacionGeografica codUbicacionGeoInt;
-    @OneToMany(mappedBy = "codInstitucionEducativa")
-    private List<PerHistTipoPersona> perHistTipoPersonaList;
 
     public EduInstitucionEducativa() {
     }
@@ -130,14 +126,6 @@ public class EduInstitucionEducativa implements Serializable {
         this.codUbicacionGeoInt = codUbicacionGeoInt;
     }
 
-    public List<PerHistTipoPersona> getPerHistTipoPersonaList() {
-        return perHistTipoPersonaList;
-    }
-
-    public void setPerHistTipoPersonaList(List<PerHistTipoPersona> perHistTipoPersonaList) {
-        this.perHistTipoPersonaList = perHistTipoPersonaList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -147,6 +135,7 @@ public class EduInstitucionEducativa implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof EduInstitucionEducativa)) {
             return false;
         }
@@ -159,7 +148,7 @@ public class EduInstitucionEducativa implements Serializable {
 
     @Override
     public String toString() {
-        return "[ codInstitucionEducativa=" + codInstitucionEducativa + " ]";
+        return "ec.edu.espe.arquitectura.matriculaglobal.model.EduInstitucionEducativa[ codInstitucionEducativa=" + codInstitucionEducativa + " ]";
     }
     
 }

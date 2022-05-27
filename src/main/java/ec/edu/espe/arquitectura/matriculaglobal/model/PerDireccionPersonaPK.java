@@ -23,6 +23,7 @@ public class PerDireccionPersonaPK implements Serializable {
 
     @Column(name = "cod_persona", nullable = false)
     private int codPersona;
+
     @Column(name = "sec_direccion", nullable = false)
     private short secDireccion;
 
@@ -60,6 +61,7 @@ public class PerDireccionPersonaPK implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+    
         if (!(object instanceof PerDireccionPersonaPK)) {
             return false;
         }
@@ -75,7 +77,7 @@ public class PerDireccionPersonaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "[ codPersona=" + codPersona + ", secDireccion=" + secDireccion + " ]";
+        return "PerDireccionPersonaPK[ codPersona=" + codPersona + ", secDireccion=" + secDireccion + " ]";
     }
     
 }

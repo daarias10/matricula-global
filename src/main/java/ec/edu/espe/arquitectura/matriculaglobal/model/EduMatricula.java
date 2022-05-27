@@ -23,62 +23,56 @@ import javax.persistence.*;
 @Entity
 @Table(name = "edu_matricula", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"cod_periodo"})})
+
 public class EduMatricula implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cod_matricula", nullable = false)
-    private Integer codMatricula;
-    @Column(name = "tipo", nullable = false)
-    private int tipo;
-    @Column(name = "modo", nullable = false, length = 32)
-    private String modo;
+    @EmbeddedId
+    protected EduMatriculaPK eduMatriculaPK;
+    @Column(name = "tipo", nullable = false, length = 3)
+    private String tipo;
     @Column(name = "fecha", nullable = false)
     @Temporal(TemporalType.DATE)
     private Date fecha;
     @Column(name = "costo", nullable = false)
     private double costo;
-    @JoinColumn(name = "cod_inscripcion_estudiante", referencedColumnName = "cod_inscripcion_carrera", nullable = false)
+    @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
     @ManyToOne(optional = false)
-    private EduInscripcionCarrera codInscripcionEstudiante;
-    @JoinColumns({
-        @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false),
-        @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false)})
+    private EduCarrera codCarrera;
+    @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false)
+    @OneToOne(optional = false)
+    private EduPeriodo codPeriodo;
+    @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private EduNrc eduNrc;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codInscripcion")
-    private List<EduCalificacion> eduCalificacionList;
+    private PerPersona perPersona;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eduMatricula")
+    private List<EduMatriculaNrc> eduMatriculaNrcList;
 
     public EduMatricula() {
     }
 
-    public EduMatricula(Integer codMatricula) {
-        this.codMatricula = codMatricula;
+    public EduMatricula(EduMatriculaPK eduMatriculaPK) {
+        this.eduMatriculaPK = eduMatriculaPK;
     }
 
-    public Integer getCodMatricula() {
-        return codMatricula;
+    public EduMatricula(String codMatricula, int codPersona) {
+        this.eduMatriculaPK = new EduMatriculaPK(codMatricula, codPersona);
     }
 
-    public void setCodMatricula(Integer codMatricula) {
-        this.codMatricula = codMatricula;
+    public EduMatriculaPK getEduMatriculaPK() {
+        return eduMatriculaPK;
     }
 
-    public int getTipo() {
+    public void setEduMatriculaPK(EduMatriculaPK eduMatriculaPK) {
+        this.eduMatriculaPK = eduMatriculaPK;
+    }
+
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public String getModo() {
-        return modo;
-    }
-
-    public void setModo(String modo) {
-        this.modo = modo;
     }
 
     public Date getFecha() {
@@ -97,34 +91,42 @@ public class EduMatricula implements Serializable {
         this.costo = costo;
     }
 
-    public EduInscripcionCarrera getCodInscripcionEstudiante() {
-        return codInscripcionEstudiante;
+    public EduCarrera getCodCarrera() {
+        return codCarrera;
     }
 
-    public void setCodInscripcionEstudiante(EduInscripcionCarrera codInscripcionEstudiante) {
-        this.codInscripcionEstudiante = codInscripcionEstudiante;
+    public void setCodCarrera(EduCarrera codCarrera) {
+        this.codCarrera = codCarrera;
     }
 
-    public EduNrc getEduNrc() {
-        return eduNrc;
+    public EduPeriodo getCodPeriodo() {
+        return codPeriodo;
     }
 
-    public void setEduNrc(EduNrc eduNrc) {
-        this.eduNrc = eduNrc;
+    public void setCodPeriodo(EduPeriodo codPeriodo) {
+        this.codPeriodo = codPeriodo;
     }
 
-    public List<EduCalificacion> getEduCalificacionList() {
-        return eduCalificacionList;
+    public PerPersona getPerPersona() {
+        return perPersona;
     }
 
-    public void setEduCalificacionList(List<EduCalificacion> eduCalificacionList) {
-        this.eduCalificacionList = eduCalificacionList;
+    public void setPerPersona(PerPersona perPersona) {
+        this.perPersona = perPersona;
+    }
+
+    public List<EduMatriculaNrc> getEduMatriculaNrcList() {
+        return eduMatriculaNrcList;
+    }
+
+    public void setEduMatriculaNrcList(List<EduMatriculaNrc> eduMatriculaNrcList) {
+        this.eduMatriculaNrcList = eduMatriculaNrcList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (codMatricula != null ? codMatricula.hashCode() : 0);
+        hash += (eduMatriculaPK != null ? eduMatriculaPK.hashCode() : 0);
         return hash;
     }
 
@@ -134,7 +136,7 @@ public class EduMatricula implements Serializable {
             return false;
         }
         EduMatricula other = (EduMatricula) object;
-        if ((this.codMatricula == null && other.codMatricula != null) || (this.codMatricula != null && !this.codMatricula.equals(other.codMatricula))) {
+        if ((this.eduMatriculaPK == null && other.eduMatriculaPK != null) || (this.eduMatriculaPK != null && !this.eduMatriculaPK.equals(other.eduMatriculaPK))) {
             return false;
         }
         return true;
@@ -142,7 +144,7 @@ public class EduMatricula implements Serializable {
 
     @Override
     public String toString() {
-        return "[ codMatricula=" + codMatricula + " ]";
+        return "[ eduMatriculaPK=" + eduMatriculaPK + " ]";
     }
     
 }

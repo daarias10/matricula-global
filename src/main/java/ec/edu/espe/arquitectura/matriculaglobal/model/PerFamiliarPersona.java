@@ -55,10 +55,6 @@ public class PerFamiliarPersona implements Serializable {
     public PerFamiliarPersona() {
     }
 
-    public PerFamiliarPersona(PerFamiliarPersonaPK perFamiliarPersonaPK) {
-        this.perFamiliarPersonaPK = perFamiliarPersonaPK;
-    }
-
     public PerFamiliarPersona(int codPersona, short secFamiliarPersona) {
         this.perFamiliarPersonaPK = new PerFamiliarPersonaPK(codPersona, secFamiliarPersona);
     }

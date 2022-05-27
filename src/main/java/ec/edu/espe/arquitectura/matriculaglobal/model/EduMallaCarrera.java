@@ -32,9 +32,12 @@ public class EduMallaCarrera implements Serializable {
     @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
     @ManyToOne(optional = false)
     private EduCarrera codCarrera;
-    @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false)
+    @JoinColumns({
+        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
+        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
     @ManyToOne(optional = false)
-    private EduMateria codMateria;
+    private EduMateria eduMateria;
+
     public EduMallaCarrera() {
     }
 
@@ -66,12 +69,12 @@ public class EduMallaCarrera implements Serializable {
         this.codCarrera = codCarrera;
     }
 
-    public EduMateria getCodMateria() {
-        return codMateria;
+    public EduMateria getEduMateria() {
+        return eduMateria;
     }
 
-    public void setCodMateria(EduMateria codMateria) {
-        this.codMateria = codMateria;
+    public void setEduMateria(EduMateria eduMateria) {
+        this.eduMateria = eduMateria;
     }
 
     @Override

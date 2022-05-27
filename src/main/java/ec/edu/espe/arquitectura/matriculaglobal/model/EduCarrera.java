@@ -22,9 +22,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "edu_carrera")
+
 public class EduCarrera implements Serializable {
 
-    private static final long serialVersionUID = 1123432123432L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_carrera", nullable = false)
@@ -52,7 +53,7 @@ public class EduCarrera implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCarrera")
     private List<EduMallaCarrera> eduMallaCarreraList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCarrera")
-    private List<EduInscripcionCarrera> eduInscripcionCarreraList;
+    private List<EduMatricula> eduMatriculaList;
     @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)
     @ManyToOne(optional = false)
     private EduDepartamento codDepartamento;
@@ -160,12 +161,12 @@ public class EduCarrera implements Serializable {
         this.eduMallaCarreraList = eduMallaCarreraList;
     }
 
-    public List<EduInscripcionCarrera> getEduInscripcionCarreraList() {
-        return eduInscripcionCarreraList;
+    public List<EduMatricula> getEduMatriculaList() {
+        return eduMatriculaList;
     }
 
-    public void setEduInscripcionCarreraList(List<EduInscripcionCarrera> eduInscripcionCarreraList) {
-        this.eduInscripcionCarreraList = eduInscripcionCarreraList;
+    public void setEduMatriculaList(List<EduMatricula> eduMatriculaList) {
+        this.eduMatriculaList = eduMatriculaList;
     }
 
     public EduDepartamento getCodDepartamento() {

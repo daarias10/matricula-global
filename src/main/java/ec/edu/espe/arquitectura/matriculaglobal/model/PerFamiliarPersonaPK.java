@@ -18,14 +18,11 @@ package ec.edu.espe.arquitectura.matriculaglobal.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
-
 @Embeddable
 public class PerFamiliarPersonaPK implements Serializable {
 
-
     @Column(name = "cod_persona", nullable = false)
     private int codPersona;
-
     @Column(name = "sec_familiar_persona", nullable = false)
     private short secFamiliarPersona;
 
@@ -78,7 +75,7 @@ public class PerFamiliarPersonaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "[ codPersona=" + codPersona + ", secFamiliarPersona=" + secFamiliarPersona + " ]";
+        return "PerFamiliarPersonaPK[ codPersona=" + codPersona + ", secFamiliarPersona=" + secFamiliarPersona + " ]";
     }
     
 }

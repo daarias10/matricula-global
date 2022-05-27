@@ -24,7 +24,7 @@ import javax.persistence.*;
 
 public class SegUsuarioPerfil implements Serializable {
 
-    private static final long serialVersionUID = 132423L;
+    private static final long serialVersionUID = 165465L;
     @EmbeddedId
     protected SegUsuarioPerfilPK segUsuarioPerfilPK;
     @Column(name = "aud_usuario", nullable = false, length = 30)
@@ -45,11 +45,7 @@ public class SegUsuarioPerfil implements Serializable {
 
     public SegUsuarioPerfil() {
     }
-
-    public SegUsuarioPerfil(SegUsuarioPerfilPK segUsuarioPerfilPK) {
-        this.segUsuarioPerfilPK = segUsuarioPerfilPK;
-    }
-
+    
     public SegUsuarioPerfil(String codUsuario, String codPerfil) {
         this.segUsuarioPerfilPK = new SegUsuarioPerfilPK(codUsuario, codPerfil);
     }

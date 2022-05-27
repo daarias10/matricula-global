@@ -16,7 +16,8 @@
 package ec.edu.espe.arquitectura.matriculaglobal.model;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -25,7 +26,7 @@ import javax.persistence.*;
 
 public class SegUsuario implements Serializable {
 
-    private static final long serialVersionUID = 1565L;
+    private static final long serialVersionUID = 1543L;
     @Id
     @Column(name = "cod_usuario", nullable = false, length = 30)
     private String codUsuario;

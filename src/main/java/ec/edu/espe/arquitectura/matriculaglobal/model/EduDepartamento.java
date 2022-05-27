@@ -21,11 +21,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "edu_departamento")
+
 public class EduDepartamento implements Serializable {
 
-    private static final long serialVersionUID = 123434323L;
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_departamento", nullable = false)
     private Integer codDepartamento;
     @Column(name = "nombre", nullable = false, length = 255)
@@ -36,7 +37,7 @@ public class EduDepartamento implements Serializable {
     private String siglas;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codDepartamento")
     private List<EduCarrera> eduCarreraList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codDepartamento")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "eduDepartamento")
     private List<EduMateria> eduMateriaList;
 
     public EduDepartamento() {

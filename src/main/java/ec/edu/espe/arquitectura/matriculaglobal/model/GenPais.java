@@ -22,27 +22,35 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "gen_pais")
+
 public class GenPais implements Serializable {
 
-    private static final long serialVersionUID = 11233L;
+    private static final long serialVersionUID = 1L;
     @Id
+    
     @Column(name = "cod_pais", nullable = false, length = 2)
     private String codPais;
+    
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
+    
     @Column(name = "por_omision", nullable = false, length = 1)
     private String porOmision;
     @Column(name = "codigo_telefonico", length = 3)
     private String codigoTelefonico;
     @Column(name = "nacionalidad", length = 50)
     private String nacionalidad;
+    
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
+    
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
+    
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
+    
     @Column(name = "version", nullable = false)
     private int version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "genPais")
@@ -174,6 +182,7 @@ public class GenPais implements Serializable {
 
     @Override
     public boolean equals(Object object) {
+        
         if (!(object instanceof GenPais)) {
             return false;
         }
