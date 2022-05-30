@@ -29,7 +29,7 @@ public class Matricula implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    private MatriculaPK matriculaPK;
+    private MatriculaPK pk;
     @Column(name = "tipo", nullable = false, length = 3)
     private String tipo;
     @Column(name = "fecha", nullable = false)
@@ -53,19 +53,19 @@ public class Matricula implements Serializable {
     }
 
     public Matricula(MatriculaPK matriculaPK) {
-        this.matriculaPK = matriculaPK;
+        this.pk = matriculaPK;
     }
 
     public Matricula(String codMatricula, int codPersona) {
-        this.matriculaPK = new MatriculaPK(codMatricula, codPersona);
+        this.pk = new MatriculaPK(codMatricula, codPersona);
     }
 
-    public MatriculaPK getMatriculaPK() {
-        return matriculaPK;
+    public MatriculaPK getPk() {
+        return pk;
     }
 
-    public void setMatriculaPK(MatriculaPK matriculaPK) {
-        this.matriculaPK = matriculaPK;
+    public void setPk(MatriculaPK matriculaPK) {
+        this.pk = matriculaPK;
     }
 
     public String getTipo() {
@@ -127,7 +127,7 @@ public class Matricula implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (matriculaPK != null ? matriculaPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -137,7 +137,7 @@ public class Matricula implements Serializable {
             return false;
         }
         Matricula other = (Matricula) object;
-        if ((this.matriculaPK == null && other.matriculaPK != null) || (this.matriculaPK != null && !this.matriculaPK.equals(other.matriculaPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -145,7 +145,7 @@ public class Matricula implements Serializable {
 
     @Override
     public String toString() {
-        return "[ matriculaPK=" + matriculaPK + " ]";
+        return "[ matriculaPK=" + pk + " ]";
     }
     
 }

@@ -27,7 +27,7 @@ public class NrcHorario implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    private NrcHorarioPK nrcHorarioPK;
+    private NrcHorarioPK pk;
     
     @Column(name = "hora_inicio", nullable = false)
     @Temporal(TemporalType.TIME)
@@ -51,19 +51,19 @@ public class NrcHorario implements Serializable {
     }
 
     public NrcHorario(NrcHorarioPK nrcHorarioPK) {
-        this.nrcHorarioPK = nrcHorarioPK;
+        this.pk = nrcHorarioPK;
     }
 
     public NrcHorario(short codNrc, int codPeriodo, int codDepartamento, int codMateria, int codAula, String diaSemana) {
-        this.nrcHorarioPK = new NrcHorarioPK(codNrc, codPeriodo, codDepartamento, codMateria, codAula, diaSemana);
+        this.pk = new NrcHorarioPK(codNrc, codPeriodo, codDepartamento, codMateria, codAula, diaSemana);
     }
 
-    public NrcHorarioPK getNrcHorarioPK() {
-        return nrcHorarioPK;
+    public NrcHorarioPK getPk() {
+        return pk;
     }
 
-    public void setNrcHorarioPK(NrcHorarioPK nrcHorarioPK) {
-        this.nrcHorarioPK = nrcHorarioPK;
+    public void setPk(NrcHorarioPK nrcHorarioPK) {
+        this.pk = nrcHorarioPK;
     }
 
     public Date getHoraInicio() {
@@ -101,7 +101,7 @@ public class NrcHorario implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (nrcHorarioPK != null ? nrcHorarioPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -112,7 +112,7 @@ public class NrcHorario implements Serializable {
             return false;
         }
         NrcHorario other = (NrcHorario) object;
-        if ((this.nrcHorarioPK == null && other.nrcHorarioPK != null) || (this.nrcHorarioPK != null && !this.nrcHorarioPK.equals(other.nrcHorarioPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -120,7 +120,7 @@ public class NrcHorario implements Serializable {
 
     @Override
     public String toString() {
-        return "[ nrcHorarioPK=" + nrcHorarioPK + " ]";
+        return "[ nrcHorarioPK=" + pk + " ]";
     }
     
 }

@@ -26,7 +26,7 @@ public class Materia implements Serializable {
 
     private static final long serialVersionUID = 12349755L;
     @EmbeddedId
-    private MateriaPK materiaPK;
+    private MateriaPK pk;
     @Column(name = "nombre", nullable = false, length = 255)
     private String nombre;
     @Column(name = "creditos", nullable = false, precision = 4, scale = 2)
@@ -51,19 +51,19 @@ public class Materia implements Serializable {
     }
 
     public Materia(MateriaPK materiaPK) {
-        this.materiaPK = materiaPK;
+        this.pk = materiaPK;
     }
 
     public Materia(int codMateria, int codDepartamento) {
-        this.materiaPK = new MateriaPK(codMateria, codDepartamento);
+        this.pk = new MateriaPK(codMateria, codDepartamento);
     }
 
-    public MateriaPK getMateriaPK() {
-        return materiaPK;
+    public MateriaPK getPk() {
+        return pk;
     }
 
     public void setmateriaPK(MateriaPK materiaPK) {
-        this.materiaPK = materiaPK;
+        this.pk = materiaPK;
     }
 
     public String getNombre() {
@@ -141,7 +141,7 @@ public class Materia implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (materiaPK != null ? materiaPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -151,7 +151,7 @@ public class Materia implements Serializable {
             return false;
         }
         Materia other = (Materia) object;
-        if ((this.materiaPK == null && other.materiaPK != null) || (this.materiaPK != null && !this.materiaPK.equals(other.materiaPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -159,7 +159,7 @@ public class Materia implements Serializable {
 
     @Override
     public String toString() {
-        return "[ materiaPK=" + materiaPK + " ]";
+        return "[ materiaPK=" + pk + " ]";
     }
     
 }

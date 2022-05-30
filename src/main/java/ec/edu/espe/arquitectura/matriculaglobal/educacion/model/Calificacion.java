@@ -26,7 +26,7 @@ public class Calificacion implements Serializable {
 
     private static final long serialVersionUID = 31322L;
     @EmbeddedId
-    private CalificacionPK calificacionPK;
+    private CalificacionPK pk;
     @Column(name = "nota1", precision = 5, scale = 2)
     private BigDecimal nota1;
     @Column(name = "nota2", precision = 5, scale = 2)
@@ -52,12 +52,12 @@ public class Calificacion implements Serializable {
     @Column(name = "observacion", length = 25)
     private String observacion;
     @JoinColumns({
-        @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_matricula", referencedColumnName = "cod_matricula", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)})
+            @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_matricula", referencedColumnName = "cod_matricula", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private MatriculaNrc matriculaNrc;
 
@@ -65,19 +65,19 @@ public class Calificacion implements Serializable {
     }
 
     public Calificacion(CalificacionPK calificacionPK) {
-        this.calificacionPK = calificacionPK;
+        this.pk = calificacionPK;
     }
 
     public Calificacion(String codMatricula, short codNrc) {
-        this.calificacionPK = new CalificacionPK(codMatricula, codNrc);
+        this.pk = new CalificacionPK(codMatricula, codNrc);
     }
 
-    public CalificacionPK getCalificacionPK() {
-        return calificacionPK;
+    public CalificacionPK getPk() {
+        return pk;
     }
 
     public void setcalificacionPK(CalificacionPK CalificacionPK) {
-        this.calificacionPK = CalificacionPK;
+        this.pk = CalificacionPK;
     }
 
     public BigDecimal getNota1() {
@@ -187,7 +187,7 @@ public class Calificacion implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (calificacionPK != null ? calificacionPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -197,7 +197,7 @@ public class Calificacion implements Serializable {
             return false;
         }
         Calificacion other = (Calificacion) object;
-        if ((this.calificacionPK == null && other.calificacionPK != null) || (this.calificacionPK != null && !this.calificacionPK.equals(other.calificacionPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -205,7 +205,7 @@ public class Calificacion implements Serializable {
 
     @Override
     public String toString() {
-        return "[ CalificacionPK=" + calificacionPK + " ]";
+        return "[ CalificacionPK=" + pk + " ]";
     }
-    
+
 }

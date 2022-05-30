@@ -27,7 +27,7 @@ public class MatriculaNrc implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    private MatriculaNrcPK matriculaNrcPK;
+    private MatriculaNrcPK pk;
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
     @Column(name = "numero", nullable = false)
@@ -35,37 +35,33 @@ public class MatriculaNrc implements Serializable {
     @Column(name = "costo", nullable = false, precision = 7, scale = 2)
     private BigDecimal costo;
     @JoinColumns({
-        @JoinColumn(name = "cod_matricula", referencedColumnName = "cod_matricula", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)})
+            @JoinColumn(name = "cod_matricula", referencedColumnName = "cod_matricula", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Matricula matricula;
     @JoinColumns({
-        @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false)})
+            @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Nrc nrc;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "matriculaNrc")
-    private List<Calificacion> calificacionList;
+    private List<Calificacion> calificaciones;
 
     public MatriculaNrc() {
     }
 
     public MatriculaNrc(MatriculaNrcPK matriculaNrcPK) {
-        this.matriculaNrcPK = matriculaNrcPK;
+        this.pk = matriculaNrcPK;
     }
 
-    public MatriculaNrc(short codNrc, int codPeriodo, int codDepartamento, int codMateria, String codMatricula, int codPersona) {
-        this.matriculaNrcPK = new MatriculaNrcPK(codNrc, codPeriodo, codDepartamento, codMateria, codMatricula, codPersona);
+    public MatriculaNrcPK getPk() {
+        return pk;
     }
 
-    public MatriculaNrcPK getMatriculaNrcPK() {
-        return matriculaNrcPK;
-    }
-
-    public void setMatriculaNrcPK(MatriculaNrcPK matriculaNrcPK) {
-        this.matriculaNrcPK = matriculaNrcPK;
+    public void setPk(MatriculaNrcPK matriculaNrcPK) {
+        this.pk = matriculaNrcPK;
     }
 
     public String getEstado() {
@@ -109,17 +105,17 @@ public class MatriculaNrc implements Serializable {
     }
 
     public List<Calificacion> getCalificacionList() {
-        return calificacionList;
+        return calificaciones;
     }
 
     public void setCalificacionList(List<Calificacion> calificacionList) {
-        this.calificacionList = calificacionList;
+        this.calificaciones = calificacionList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (matriculaNrcPK != null ? matriculaNrcPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -129,7 +125,7 @@ public class MatriculaNrc implements Serializable {
             return false;
         }
         MatriculaNrc other = (MatriculaNrc) object;
-        if ((this.matriculaNrcPK == null && other.matriculaNrcPK != null) || (this.matriculaNrcPK != null && !this.matriculaNrcPK.equals(other.matriculaNrcPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -137,7 +133,7 @@ public class MatriculaNrc implements Serializable {
 
     @Override
     public String toString() {
-        return "[ matriculaNrcPK=" + matriculaNrcPK + " ]";
+        return "[ matriculaNrcPK=" + pk + " ]";
     }
-    
+
 }
