@@ -27,7 +27,7 @@ public class MatriculaNrc implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    private MatriculaNrcPK pk;
+    protected MatriculaNrcPK matriculaNrcPK;
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
     @Column(name = "numero", nullable = false)
@@ -52,16 +52,20 @@ public class MatriculaNrc implements Serializable {
     public MatriculaNrc() {
     }
 
-    public MatriculaNrc(MatriculaNrcPK pk) {
-        this.pk = pk;
+    public MatriculaNrc(MatriculaNrcPK matriculaNrcPK) {
+        this.matriculaNrcPK = matriculaNrcPK;
     }
 
-    public MatriculaNrcPK getPk() {
-        return pk;
+    public MatriculaNrc(short codNrc, int codPeriodo, int codDepartamento, int codMateria, String codMatricula, int codPersona) {
+        this.matriculaNrcPK = new MatriculaNrcPK(codNrc, codPeriodo, codDepartamento, codMateria, codMatricula, codPersona);
     }
 
-    public void setPk(MatriculaNrcPK pk) {
-        this.pk = pk;
+    public MatriculaNrcPK getMatriculaNrcPK() {
+        return matriculaNrcPK;
+    }
+
+    public void setMatriculaNrcPK(MatriculaNrcPK matriculaNrcPK) {
+        this.matriculaNrcPK = matriculaNrcPK;
     }
 
     public String getEstado() {
@@ -111,11 +115,11 @@ public class MatriculaNrc implements Serializable {
     public void setCalificacionList(List<Calificacion> calificacionList) {
         this.calificacionList = calificacionList;
     }
-   
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (matriculaNrcPK != null ? matriculaNrcPK.hashCode() : 0);
         return hash;
     }
 
@@ -125,7 +129,7 @@ public class MatriculaNrc implements Serializable {
             return false;
         }
         MatriculaNrc other = (MatriculaNrc) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.matriculaNrcPK == null && other.matriculaNrcPK != null) || (this.matriculaNrcPK != null && !this.matriculaNrcPK.equals(other.matriculaNrcPK))) {
             return false;
         }
         return true;
@@ -133,7 +137,7 @@ public class MatriculaNrc implements Serializable {
 
     @Override
     public String toString() {
-        return "[ eduMatriculaNrcPK=" + pk + " ]";
+        return "[ matriculaNrcPK=" + matriculaNrcPK + " ]";
     }
     
 }

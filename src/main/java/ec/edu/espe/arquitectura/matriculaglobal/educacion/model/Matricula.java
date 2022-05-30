@@ -29,7 +29,7 @@ public class Matricula implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    private MatriculaPK pk;
+    protected MatriculaPK matriculaPK;
     @Column(name = "tipo", nullable = false, length = 3)
     private String tipo;
     @Column(name = "fecha", nullable = false)
@@ -42,7 +42,7 @@ public class Matricula implements Serializable {
     private Carrera codCarrera;
     @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false)
     @OneToOne(optional = false)
-    private Periodo periodo;
+    private Periodo codPeriodo;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Persona persona;
@@ -52,16 +52,20 @@ public class Matricula implements Serializable {
     public Matricula() {
     }
 
-    public Matricula(MatriculaPK pk) {
-        this.pk = pk;
+    public Matricula(MatriculaPK matriculaPK) {
+        this.matriculaPK = matriculaPK;
     }
 
-    public MatriculaPK getPk() {
-        return pk;
+    public Matricula(String codMatricula, int codPersona) {
+        this.matriculaPK = new MatriculaPK(codMatricula, codPersona);
     }
 
-    public void setPk(MatriculaPK pk) {
-        this.pk = pk;
+    public MatriculaPK getMatriculaPK() {
+        return matriculaPK;
+    }
+
+    public void setMatriculaPK(MatriculaPK matriculaPK) {
+        this.matriculaPK = matriculaPK;
     }
 
     public String getTipo() {
@@ -96,12 +100,12 @@ public class Matricula implements Serializable {
         this.codCarrera = codCarrera;
     }
 
-    public Periodo getPeriodo() {
-        return periodo;
+    public Periodo getCodPeriodo() {
+        return codPeriodo;
     }
 
-    public void setPeriodo(Periodo periodo) {
-        this.periodo = periodo;
+    public void setCodPeriodo(Periodo codPeriodo) {
+        this.codPeriodo = codPeriodo;
     }
 
     public Persona getPersona() {
@@ -123,7 +127,7 @@ public class Matricula implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (matriculaPK != null ? matriculaPK.hashCode() : 0);
         return hash;
     }
 
@@ -133,7 +137,7 @@ public class Matricula implements Serializable {
             return false;
         }
         Matricula other = (Matricula) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.matriculaPK == null && other.matriculaPK != null) || (this.matriculaPK != null && !this.matriculaPK.equals(other.matriculaPK))) {
             return false;
         }
         return true;
@@ -141,7 +145,7 @@ public class Matricula implements Serializable {
 
     @Override
     public String toString() {
-        return "[ pk=" + pk + " ]";
+        return "[ matriculaPK=" + matriculaPK + " ]";
     }
     
 }

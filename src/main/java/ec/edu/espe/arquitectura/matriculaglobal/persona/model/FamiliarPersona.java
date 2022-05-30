@@ -23,9 +23,9 @@ import javax.persistence.*;
 @Table(name = "per_familiar_persona")
 public class FamiliarPersona implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 123445L;
     @EmbeddedId
-    private FamiliarPersonaPK pk;
+    protected FamiliarPersonaPK familiarPersonaPK;
     @Column(name = "tipo_familiar", nullable = false, length = 3)
     private String tipoFamiliar;
     @Column(name = "nombre", nullable = false, length = 128)
@@ -55,16 +55,16 @@ public class FamiliarPersona implements Serializable {
     public FamiliarPersona() {
     }
 
-    public FamiliarPersona(FamiliarPersonaPK pk) {
-        this.pk = pk;
+    public FamiliarPersona(int codPersona, short secFamiliarPersona) {
+        this.familiarPersonaPK = new FamiliarPersonaPK(codPersona, secFamiliarPersona);
     }
 
-    public FamiliarPersonaPK getPk() {
-        return pk;
+    public FamiliarPersonaPK getFamiliarPersonaPK() {
+        return familiarPersonaPK;
     }
 
-    public void setPk(FamiliarPersonaPK pk) {
-        this.pk = pk;
+    public void setFamiliarPersonaPK(FamiliarPersonaPK familiarPersonaPK) {
+        this.familiarPersonaPK = familiarPersonaPK;
     }
 
     public String getTipoFamiliar() {
@@ -158,7 +158,7 @@ public class FamiliarPersona implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (familiarPersonaPK != null ? familiarPersonaPK.hashCode() : 0);
         return hash;
     }
 
@@ -168,7 +168,7 @@ public class FamiliarPersona implements Serializable {
             return false;
         }
         FamiliarPersona other = (FamiliarPersona) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.familiarPersonaPK == null && other.familiarPersonaPK != null) || (this.familiarPersonaPK != null && !this.familiarPersonaPK.equals(other.familiarPersonaPK))) {
             return false;
         }
         return true;
@@ -176,7 +176,7 @@ public class FamiliarPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "[ perFamiliarPersonaPK=" + pk + " ]";
+        return "[ familiarPersonaPK=" + familiarPersonaPK + " ]";
     }
     
 }

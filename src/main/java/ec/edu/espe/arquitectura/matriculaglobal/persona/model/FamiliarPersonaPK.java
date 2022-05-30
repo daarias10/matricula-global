@@ -75,7 +75,7 @@ public class FamiliarPersonaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "PerFamiliarPersonaPK[ codPersona=" + codPersona + ", secFamiliarPersona=" + secFamiliarPersona + " ]";
+        return "familiarPersonaPK[ codPersona=" + codPersona + ", secFamiliarPersona=" + secFamiliarPersona + " ]";
     }
     
 }

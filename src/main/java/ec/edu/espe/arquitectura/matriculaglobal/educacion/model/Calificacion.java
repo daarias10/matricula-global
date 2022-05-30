@@ -24,9 +24,9 @@ import javax.persistence.*;
 
 public class Calificacion implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 4554L;
     @EmbeddedId
-    private CalificacionPK pk;
+    protected CalificacionPK calificacionPK;
     @Column(name = "nota1", precision = 5, scale = 2)
     private BigDecimal nota1;
     @Column(name = "nota2", precision = 5, scale = 2)
@@ -64,16 +64,20 @@ public class Calificacion implements Serializable {
     public Calificacion() {
     }
 
-    public Calificacion(CalificacionPK eduCalificacionPK) {
-        this.pk = eduCalificacionPK;
+    public Calificacion(CalificacionPK calificacionPK) {
+        this.calificacionPK = calificacionPK;
     }
 
-    public CalificacionPK getEduCalificacionPK() {
-        return pk;
+    public Calificacion(String codMatricula, short codNrc) {
+        this.calificacionPK = new CalificacionPK(codMatricula, codNrc);
     }
 
-    public void setEduCalificacionPK(CalificacionPK eduCalificacionPK) {
-        this.pk = eduCalificacionPK;
+    public CalificacionPK getCalificacionPK() {
+        return calificacionPK;
+    }
+
+    public void setcalificacionPK(CalificacionPK CalificacionPK) {
+        this.calificacionPK = CalificacionPK;
     }
 
     public BigDecimal getNota1() {
@@ -183,7 +187,7 @@ public class Calificacion implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (calificacionPK != null ? calificacionPK.hashCode() : 0);
         return hash;
     }
 
@@ -193,7 +197,7 @@ public class Calificacion implements Serializable {
             return false;
         }
         Calificacion other = (Calificacion) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.calificacionPK == null && other.calificacionPK != null) || (this.calificacionPK != null && !this.calificacionPK.equals(other.calificacionPK))) {
             return false;
         }
         return true;
@@ -201,7 +205,7 @@ public class Calificacion implements Serializable {
 
     @Override
     public String toString() {
-        return "[ eduCalificacionPK=" + pk + " ]";
+        return "[ CalificacionPK=" + calificacionPK + " ]";
     }
     
 }

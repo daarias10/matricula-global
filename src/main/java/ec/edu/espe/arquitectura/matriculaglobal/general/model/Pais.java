@@ -1,18 +1,3 @@
-/*
- * Copyright 2022 User.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package ec.edu.espe.arquitectura.matriculaglobal.general.model;
 
 import ec.edu.espe.arquitectura.matriculaglobal.persona.model.Persona;
@@ -26,32 +11,25 @@ import javax.persistence.*;
 
 public class Pais implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 176678L;
     @Id
-    
     @Column(name = "cod_pais", nullable = false, length = 2)
     private String codPais;
-    
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
-    
     @Column(name = "por_omision", nullable = false, length = 1)
     private String porOmision;
     @Column(name = "codigo_telefonico", length = 3)
     private String codigoTelefonico;
     @Column(name = "nacionalidad", length = 50)
     private String nacionalidad;
-    
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    
     @Column(name = "version", nullable = false)
     private int version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pais")
@@ -146,8 +124,8 @@ public class Pais implements Serializable {
         return paisEstructuraList;
     }
 
-    public void setPaisEstructuraList(List<PaisEstructura> paisEstructuraList) {
-        this.paisEstructuraList = paisEstructuraList;
+    public void setPaisEstructuraList(List<PaisEstructura> PaisEstructuraList) {
+        this.paisEstructuraList = PaisEstructuraList;
     }
 
     public List<UbicacionGeografica> getUbicacionGeograficaList() {
@@ -173,7 +151,6 @@ public class Pais implements Serializable {
     public void setPersonaList1(List<Persona> personaList1) {
         this.personaList1 = personaList1;
     }
-
 
     @Override
     public int hashCode() {

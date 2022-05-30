@@ -75,7 +75,7 @@ public class DocumentoPersonaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "PerDocumentoPersonaPK[ codPersona=" + codPersona + ", codTipoDocumento=" + codTipoDocumento + " ]";
+        return "documentoPersonaPK[ codPersona=" + codPersona + ", codTipoDocumento=" + codTipoDocumento + " ]";
     }
     
 }

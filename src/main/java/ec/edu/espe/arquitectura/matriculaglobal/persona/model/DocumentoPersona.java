@@ -23,9 +23,9 @@ import javax.persistence.*;
 @Table(name = "per_documento_persona")
 public class DocumentoPersona implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 12233L;
     @EmbeddedId
-    private DocumentoPersonaPK pk;
+    protected DocumentoPersonaPK documentoPersonaPK;
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
     @Column(name = "fecha_registro", nullable = false)
@@ -62,16 +62,16 @@ public class DocumentoPersona implements Serializable {
     public DocumentoPersona() {
     }
 
-    public DocumentoPersona(DocumentoPersonaPK pk) {
-        this.pk = pk;
+    public DocumentoPersona(int codPersona, String codTipoDocumento) {
+        this.documentoPersonaPK = new DocumentoPersonaPK(codPersona, codTipoDocumento);
     }
 
-    public DocumentoPersonaPK getPk() {
-        return pk;
+    public DocumentoPersonaPK getDocumentoPersonaPK() {
+        return documentoPersonaPK;
     }
 
-    public void setPk(DocumentoPersonaPK pk) {
-        this.pk = pk;
+    public void setDocumentoPersonaPK(DocumentoPersonaPK perDocumentoPersonaPK) {
+        this.documentoPersonaPK = documentoPersonaPK;
     }
 
     public String getEstado() {
@@ -181,7 +181,7 @@ public class DocumentoPersona implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (documentoPersonaPK != null ? documentoPersonaPK.hashCode() : 0);
         return hash;
     }
 
@@ -191,7 +191,7 @@ public class DocumentoPersona implements Serializable {
             return false;
         }
         DocumentoPersona other = (DocumentoPersona) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.documentoPersonaPK == null && other.documentoPersonaPK != null) || (this.documentoPersonaPK != null && !this.documentoPersonaPK.equals(other.documentoPersonaPK))) {
             return false;
         }
         return true;
@@ -199,7 +199,7 @@ public class DocumentoPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "PerDocumentoPersona[ perDocumentoPersonaPK=" + pk + " ]";
+        return "documentoPersona[ documentoPersonaPK=" + documentoPersonaPK + " ]";
     }
-
+    
 }

@@ -24,7 +24,7 @@ import javax.persistence.*;
 
 public class Departamento implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 121233456L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_departamento", nullable = false)

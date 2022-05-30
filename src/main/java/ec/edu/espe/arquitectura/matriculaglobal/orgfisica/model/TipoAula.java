@@ -24,7 +24,7 @@ import javax.persistence.*;
 @Table(name = "ofi_tipo_aula")
 public class TipoAula implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 123454L;
     @Id
     @Column(name = "cod_tipo_aula", nullable = false, length = 10)
     private String codTipoAula;
@@ -104,7 +104,7 @@ public class TipoAula implements Serializable {
     public void setAulaList(List<Aula> aulaList) {
         this.aulaList = aulaList;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -126,7 +126,7 @@ public class TipoAula implements Serializable {
 
     @Override
     public String toString() {
-        return "OfiTipoAula[ codTipoAula=" + codTipoAula + " ]";
+        return "TipoAula[ codTipoAula=" + codTipoAula + " ]";
     }
     
 }

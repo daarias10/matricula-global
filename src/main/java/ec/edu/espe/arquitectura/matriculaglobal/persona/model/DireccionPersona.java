@@ -25,9 +25,9 @@ import javax.persistence.TemporalType;
 @Table(name = "per_direccion_persona")
 public class DireccionPersona implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    private DireccionPersonaPK pk;
+    protected DireccionPersonaPK direccionPersonaPK;
     @Column(name = "cod_tipo_direccion", nullable = false, length = 3)
     private String codTipoDireccion;
     @Column(name = "cod_org_geo_direccion", nullable = false)
@@ -64,16 +64,16 @@ public class DireccionPersona implements Serializable {
     public DireccionPersona() {
     }
 
-    public DireccionPersona(DireccionPersonaPK pk) {
-        this.pk = pk;
+    public DireccionPersona(int codPersona, short secDireccion) {
+        this.direccionPersonaPK = new DireccionPersonaPK(codPersona, secDireccion);
     }
 
-    public DireccionPersonaPK getPk() {
-        return pk;
+    public DireccionPersonaPK getDireccionPersonaPK() {
+        return direccionPersonaPK;
     }
 
-    public void setPk(DireccionPersonaPK pk) {
-        this.pk = pk;
+    public void setDireccionPersonaPK(DireccionPersonaPK direccionPersonaPK) {
+        this.direccionPersonaPK = direccionPersonaPK;
     }
 
     public String getCodTipoDireccion() {
@@ -199,7 +199,7 @@ public class DireccionPersona implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (direccionPersonaPK != null ? direccionPersonaPK.hashCode() : 0);
         return hash;
     }
 
@@ -209,7 +209,7 @@ public class DireccionPersona implements Serializable {
             return false;
         }
         DireccionPersona other = (DireccionPersona) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.direccionPersonaPK == null && other.direccionPersonaPK != null) || (this.direccionPersonaPK != null && !this.direccionPersonaPK.equals(other.direccionPersonaPK))) {
             return false;
         }
         return true;
@@ -217,7 +217,7 @@ public class DireccionPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "PerDireccionPersona[ perDireccionPersonaPK=" + pk + " ]";
+        return "DireccionPersona[ DireccionPersonaPK=" + direccionPersonaPK + " ]";
     }
     
 }

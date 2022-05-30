@@ -27,7 +27,7 @@ public class NrcHorario implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    private NrcHorarioPK pk;
+    protected NrcHorarioPK nrcHorarioPK;
     
     @Column(name = "hora_inicio", nullable = false)
     @Temporal(TemporalType.TIME)
@@ -50,16 +50,20 @@ public class NrcHorario implements Serializable {
     public NrcHorario() {
     }
 
-    public NrcHorario(NrcHorarioPK pk) {
-        this.pk = pk;
+    public NrcHorario(NrcHorarioPK nrcHorarioPK) {
+        this.nrcHorarioPK = nrcHorarioPK;
     }
 
-    public NrcHorarioPK getPk() {
-        return pk;
+    public NrcHorario(short codNrc, int codPeriodo, int codDepartamento, int codMateria, int codAula, String diaSemana) {
+        this.nrcHorarioPK = new NrcHorarioPK(codNrc, codPeriodo, codDepartamento, codMateria, codAula, diaSemana);
     }
 
-    public void setPk(NrcHorarioPK pk) {
-        this.pk = pk;
+    public NrcHorarioPK getNrcHorarioPK() {
+        return nrcHorarioPK;
+    }
+
+    public void setNrcHorarioPK(NrcHorarioPK nrcHorarioPK) {
+        this.nrcHorarioPK = nrcHorarioPK;
     }
 
     public Date getHoraInicio() {
@@ -97,7 +101,7 @@ public class NrcHorario implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (nrcHorarioPK != null ? nrcHorarioPK.hashCode() : 0);
         return hash;
     }
 
@@ -108,7 +112,7 @@ public class NrcHorario implements Serializable {
             return false;
         }
         NrcHorario other = (NrcHorario) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.nrcHorarioPK == null && other.nrcHorarioPK != null) || (this.nrcHorarioPK != null && !this.nrcHorarioPK.equals(other.nrcHorarioPK))) {
             return false;
         }
         return true;
@@ -116,7 +120,7 @@ public class NrcHorario implements Serializable {
 
     @Override
     public String toString() {
-        return "[ eduNrcHorarioPK=" + pk + " ]";
+        return "[ nrcHorarioPK=" + nrcHorarioPK + " ]";
     }
     
 }

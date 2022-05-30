@@ -24,7 +24,7 @@ import javax.persistence.*;
 @Table(name = "ofi_institucion")
 public class InstitucionFisica implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 13456L;
     @Id
     @Column(name = "cod_institucion", nullable = false)
     private Short codInstitucion;
@@ -46,7 +46,7 @@ public class InstitucionFisica implements Serializable {
     @Column(name = "version", nullable = false)
     private int version;
     @OneToMany(mappedBy = "codInstitucion")
-    private List<Sede> ofiSedeList;
+    private List<Sede> sedeList;
 
     public InstitucionFisica() {
     }
@@ -127,12 +127,12 @@ public class InstitucionFisica implements Serializable {
         this.version = version;
     }
 
-    public List<Sede> getOfiSedeList() {
-        return ofiSedeList;
+    public List<Sede> getSedeList() {
+        return sedeList;
     }
 
-    public void setOfiSedeList(List<Sede> ofiSedeList) {
-        this.ofiSedeList = ofiSedeList;
+    public void setSedeList(List<Sede> sedeList) {
+        this.sedeList = sedeList;
     }
 
     @Override
@@ -156,7 +156,7 @@ public class InstitucionFisica implements Serializable {
 
     @Override
     public String toString() {
-        return "OfiInstitucion[ codInstitucion=" + codInstitucion + " ]";
+        return "Institucion[ codInstitucion=" + codInstitucion + " ]";
     }
     
 }

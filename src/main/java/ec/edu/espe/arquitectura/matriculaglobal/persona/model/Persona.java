@@ -416,7 +416,6 @@ public class Persona implements Serializable {
         this.histTipoPersonaList = histTipoPersonaList;
     }
 
-
     @Override
     public int hashCode() {
         int hash = 0;

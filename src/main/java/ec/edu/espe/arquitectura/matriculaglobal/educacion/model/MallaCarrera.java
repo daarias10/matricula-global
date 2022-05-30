@@ -73,8 +73,8 @@ public class MallaCarrera implements Serializable {
         return materia;
     }
 
-    public void setMateria(Materia eduMateria) {
-        this.materia = eduMateria;
+    public void setMateria(Materia materia) {
+        this.materia = materia;
     }
 
     @Override

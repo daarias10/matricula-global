@@ -22,26 +22,20 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "gen_pais_estructura")
-
 public class PaisEstructura implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 87971L;
     @EmbeddedId
-    private PaisEstructuraPK pk;
-    
+    protected PaisEstructuraPK paisEstructuraPK;
     @Column(name = "nombre", nullable = false, length = 64)
     private String nombre;
-    
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
-    
     @Column(name = "aud_fecha", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date audFecha;
-    
     @Column(name = "aud_ip", nullable = false, length = 30)
     private String audIp;
-    
     @Column(name = "version", nullable = false)
     private int version;
     @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais", nullable = false, insertable = false, updatable = false)
@@ -53,12 +47,20 @@ public class PaisEstructura implements Serializable {
     public PaisEstructura() {
     }
 
-    public PaisEstructuraPK getPk() {
-        return pk;
+    public PaisEstructura(PaisEstructuraPK paisEstructuraPK) {
+        this.paisEstructuraPK = paisEstructuraPK;
     }
 
-    public void setPk(PaisEstructuraPK pk) {
-        this.pk = pk;
+    public PaisEstructura(String codPais, short nivel) {
+        this.paisEstructuraPK = new PaisEstructuraPK(codPais, nivel);
+    }
+
+    public PaisEstructuraPK getPaisEstructuraPK() {
+        return paisEstructuraPK;
+    }
+
+    public void setPaisEstructuraPK(PaisEstructuraPK paisEstructuraPK) {
+        this.paisEstructuraPK = paisEstructuraPK;
     }
 
     public String getNombre() {
@@ -117,11 +119,10 @@ public class PaisEstructura implements Serializable {
         this.ubicacionGeograficaList = ubicacionGeograficaList;
     }
 
-
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (paisEstructuraPK != null ? paisEstructuraPK.hashCode() : 0);
         return hash;
     }
 
@@ -132,7 +133,7 @@ public class PaisEstructura implements Serializable {
             return false;
         }
         PaisEstructura other = (PaisEstructura) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.paisEstructuraPK == null && other.paisEstructuraPK != null) || (this.paisEstructuraPK != null && !this.paisEstructuraPK.equals(other.paisEstructuraPK))) {
             return false;
         }
         return true;
@@ -140,7 +141,7 @@ public class PaisEstructura implements Serializable {
 
     @Override
     public String toString() {
-        return "[ genPaisEstructuraPK=" + pk + " ]";
+        return "[ PaisEstructuraPK=" + paisEstructuraPK + " ]";
     }
     
 }

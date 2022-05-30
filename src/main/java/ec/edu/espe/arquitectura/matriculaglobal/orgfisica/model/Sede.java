@@ -24,7 +24,7 @@ import javax.persistence.*;
 @Table(name = "ofi_sede")
 public class Sede implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 123456L;
     @Id
     @Column(name = "cod_sede", nullable = false, length = 8)
     private String codSede;
@@ -157,7 +157,7 @@ public class Sede implements Serializable {
 
     @Override
     public String toString() {
-        return "OfiSede[ codSede=" + codSede + " ]";
+        return "Sede[ codSede=" + codSede + " ]";
     }
     
 }

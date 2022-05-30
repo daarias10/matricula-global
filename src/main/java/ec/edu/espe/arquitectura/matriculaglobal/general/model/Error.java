@@ -23,15 +23,12 @@ import javax.persistence.*;
 
 public class Error implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 64751L;
     @Id
-    
     @Column(name = "cod_error", nullable = false, length = 5)
     private String codError;
-    
     @Column(name = "titulo", nullable = false, length = 255)
     private String titulo;
-    
     @Column(name = "descripcion", nullable = false, length = 1000)
     private String descripcion;
 

@@ -46,10 +46,10 @@ public class Aula implements Serializable {
     @Column(name = "version", nullable = false)
     private int version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "aula")
-    private List<NrcHorario> horarioList;
+    private List<NrcHorario> nrcHorarioList;
     @JoinColumn(name = "cod_edificio", referencedColumnName = "cod_edificio")
     @ManyToOne
-    private Edificio edificio;
+    private Edificio codEdificio;
     @JoinColumn(name = "cod_edificio_bloque", referencedColumnName = "cod_edificio_bloque")
     @ManyToOne
     private EdificioBloque codEdificioBloque;
@@ -128,20 +128,20 @@ public class Aula implements Serializable {
         this.version = version;
     }
 
-    public List<NrcHorario> getHorarioList() {
-        return horarioList;
+    public List<NrcHorario> getNrcHorarioList() {
+        return nrcHorarioList;
     }
 
-    public void setHorarioList(List<NrcHorario> horarioList) {
-        this.horarioList = horarioList;
+    public void setNrcHorarioList(List<NrcHorario> nrcHorarioList) {
+        this.nrcHorarioList = nrcHorarioList;
     }
 
-    public Edificio getEdificio() {
-        return edificio;
+    public Edificio getCodEdificio() {
+        return codEdificio;
     }
 
-    public void setEdificio(Edificio edificio) {
-        this.edificio = edificio;
+    public void setCodEdificio(Edificio codEdificio) {
+        this.codEdificio = codEdificio;
     }
 
     public EdificioBloque getCodEdificioBloque() {

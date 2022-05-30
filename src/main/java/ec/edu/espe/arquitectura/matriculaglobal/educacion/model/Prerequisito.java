@@ -71,7 +71,7 @@ public class Prerequisito implements Serializable {
         this.materia = materia;
     }
 
-    public Materia getMateria1() {
+    public Materia getmateria1() {
         return materia1;
     }
 

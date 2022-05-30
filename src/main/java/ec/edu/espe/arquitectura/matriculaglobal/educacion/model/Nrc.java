@@ -28,7 +28,7 @@ public class Nrc implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    private NrcPK pk;
+    protected NrcPK nrcPK;
     @Column(name = "cupo_disponible", nullable = false)
     private short cupoDisponible;
     @Column(name = "cupo_registrado", nullable = false)
@@ -54,16 +54,20 @@ public class Nrc implements Serializable {
     public Nrc() {
     }
 
-    public Nrc(NrcPK pk) {
-        this.pk = pk;
+    public Nrc(NrcPK nrcPK) {
+        this.nrcPK = nrcPK;
     }
 
-    public NrcPK getPk() {
-        return pk;
+    public Nrc(short codNrc, int codPeriodo, int codDepartamento, int codMateria) {
+        this.nrcPK = new NrcPK(codNrc, codPeriodo, codDepartamento, codMateria);
     }
 
-    public void setPk(NrcPK pk) {
-        this.pk = pk;
+    public NrcPK getNrcPK() {
+        return nrcPK;
+    }
+
+    public void setNrcPK(NrcPK nrcPK) {
+        this.nrcPK = nrcPK;
     }
 
     public short getCupoDisponible() {
@@ -133,7 +137,7 @@ public class Nrc implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (nrcPK != null ? nrcPK.hashCode() : 0);
         return hash;
     }
 
@@ -143,7 +147,7 @@ public class Nrc implements Serializable {
             return false;
         }
         Nrc other = (Nrc) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.nrcPK == null && other.nrcPK != null) || (this.nrcPK != null && !this.nrcPK.equals(other.nrcPK))) {
             return false;
         }
         return true;
@@ -151,7 +155,7 @@ public class Nrc implements Serializable {
 
     @Override
     public String toString() {
-        return "[ eduNrcPK=" + pk + " ]";
+        return "[ nrcPK=" + nrcPK + " ]";
     }
     
 }

@@ -24,9 +24,9 @@ import javax.persistence.*;
 @Table(name = "edu_materia")
 public class Materia implements Serializable {
 
-    private static final long serialVersionUID = 12345L;
+    private static final long serialVersionUID = 12349755L;
     @EmbeddedId
-    private MateriaPK pk;
+    protected MateriaPK materiaPK;
     @Column(name = "nombre", nullable = false, length = 255)
     private String nombre;
     @Column(name = "creditos", nullable = false, precision = 4, scale = 2)
@@ -50,16 +50,20 @@ public class Materia implements Serializable {
     public Materia() {
     }
 
-    public Materia(MateriaPK eduMateriaPK) {
-        this.pk = eduMateriaPK;
+    public Materia(MateriaPK materiaPK) {
+        this.materiaPK = materiaPK;
     }
 
-    public MateriaPK getPk() {
-        return pk;
+    public Materia(int codMateria, int codDepartamento) {
+        this.materiaPK = new MateriaPK(codMateria, codDepartamento);
     }
 
-    public void setPk(MateriaPK pk) {
-        this.pk = pk;
+    public MateriaPK getMateriaPK() {
+        return materiaPK;
+    }
+
+    public void setmateriaPK(MateriaPK materiaPK) {
+        this.materiaPK = materiaPK;
     }
 
     public String getNombre() {
@@ -98,8 +102,8 @@ public class Materia implements Serializable {
         return nrcList;
     }
 
-    public void setNrcList(List<Nrc> nrcList) {
-        this.nrcList = nrcList;
+    public void setNrcList(List<Nrc> list) {
+        this.nrcList = list;
     }
 
     public List<MallaCarrera> getMallaCarreraList() {
@@ -137,7 +141,7 @@ public class Materia implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (materiaPK != null ? materiaPK.hashCode() : 0);
         return hash;
     }
 
@@ -147,7 +151,7 @@ public class Materia implements Serializable {
             return false;
         }
         Materia other = (Materia) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.materiaPK == null && other.materiaPK != null) || (this.materiaPK != null && !this.materiaPK.equals(other.materiaPK))) {
             return false;
         }
         return true;
@@ -155,7 +159,7 @@ public class Materia implements Serializable {
 
     @Override
     public String toString() {
-        return "[ eduMateriaPK=" + pk + " ]";
+        return "[ materiaPK=" + materiaPK + " ]";
     }
     
 }

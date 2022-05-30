@@ -75,7 +75,7 @@ public class HistTipoPersonaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "PerHistTipoPersonaPK[ codPersona=" + codPersona + ", codTipoPersona=" + codTipoPersona + " ]";
+        return "histTipoPersonaPK[ codPersona=" + codPersona + ", codTipoPersona=" + codTipoPersona + " ]";
     }
     
 }

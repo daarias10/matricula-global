@@ -23,9 +23,9 @@ import javax.persistence.*;
 @Table(name = "per_hist_tipo_persona")
 public class HistTipoPersona implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 134543L;
     @EmbeddedId
-    private HistTipoPersonaPK pk;
+    protected HistTipoPersonaPK histTipoPersonaPK;
     @Column(name = "fecha_inicio", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInicio;
@@ -55,16 +55,16 @@ public class HistTipoPersona implements Serializable {
     public HistTipoPersona() {
     }
 
-    public HistTipoPersona(HistTipoPersonaPK pk) {
-        this.pk = pk;
+    public HistTipoPersona(int codPersona, String codTipoPersona) {
+        this.histTipoPersonaPK = new HistTipoPersonaPK(codPersona, codTipoPersona);
     }
 
-    public HistTipoPersonaPK getPk() {
-        return pk;
+    public HistTipoPersonaPK getHistTipoPersonaPK() {
+        return histTipoPersonaPK;
     }
 
-    public void setPk(HistTipoPersonaPK pk) {
-        this.pk = pk;
+    public void setHistTipoPersonaPK(HistTipoPersonaPK histTipoPersonaPK) {
+        this.histTipoPersonaPK = histTipoPersonaPK;
     }
 
     public Date getFechaInicio() {
@@ -146,11 +146,11 @@ public class HistTipoPersona implements Serializable {
     public void setTipoPersona(TipoPersona tipoPersona) {
         this.tipoPersona = tipoPersona;
     }
- 
+
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pk != null ? pk.hashCode() : 0);
+        hash += (histTipoPersonaPK != null ? histTipoPersonaPK.hashCode() : 0);
         return hash;
     }
 
@@ -160,7 +160,7 @@ public class HistTipoPersona implements Serializable {
             return false;
         }
         HistTipoPersona other = (HistTipoPersona) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
+        if ((this.histTipoPersonaPK == null && other.histTipoPersonaPK != null) || (this.histTipoPersonaPK != null && !this.histTipoPersonaPK.equals(other.histTipoPersonaPK))) {
             return false;
         }
         return true;
@@ -168,7 +168,7 @@ public class HistTipoPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "PerHistTipoPersona[ pk=" + pk + " ]";
+        return "histTipoPersona[ histTipoPersonaPK=" + histTipoPersonaPK + " ]";
     }
     
 }

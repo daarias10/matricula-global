@@ -24,7 +24,7 @@ import javax.persistence.*;
 @Table(name = "ofi_edificio")
 public class Edificio implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 12344L;
     @Id
     @Column(name = "cod_edificio", nullable = false, length = 8)
     private String codEdificio;
@@ -56,9 +56,9 @@ public class Edificio implements Serializable {
     @JoinColumn(name = "cod_sede", referencedColumnName = "cod_sede")
     @ManyToOne
     private Sede codSede;
-    @OneToMany(mappedBy = "edificio")
+    @OneToMany(mappedBy = "codEdificio")
     private List<EdificioBloque> edificioBloqueList;
-    @OneToMany(mappedBy = "edificio")
+    @OneToMany(mappedBy = "codEdificio")
     private List<Aula> aulaList;
 
     public Edificio() {

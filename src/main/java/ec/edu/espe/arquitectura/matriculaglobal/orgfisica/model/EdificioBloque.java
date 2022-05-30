@@ -24,7 +24,7 @@ import javax.persistence.*;
 @Table(name = "ofi_edificio_bloque")
 public class EdificioBloque implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 13456L;
     @Id
     @Column(name = "cod_edificio_bloque", nullable = false, length = 8)
     private String codEdificioBloque;
@@ -43,7 +43,7 @@ public class EdificioBloque implements Serializable {
     private int version;
     @JoinColumn(name = "cod_edificio", referencedColumnName = "cod_edificio")
     @ManyToOne
-    private Edificio edificio;
+    private Edificio codEdificio;
     @OneToMany(mappedBy = "codEdificioBloque")
     private List<Aula> aulaList;
 
@@ -110,12 +110,12 @@ public class EdificioBloque implements Serializable {
         this.version = version;
     }
 
-    public Edificio getEdificio() {
-        return edificio;
+    public Edificio getCodEdificio() {
+        return codEdificio;
     }
 
-    public void setEdificio(Edificio edificio) {
-        this.edificio = edificio;
+    public void setCodEdificio(Edificio codEdificio) {
+        this.codEdificio = codEdificio;
     }
 
     public List<Aula> getAulaList() {
@@ -147,7 +147,7 @@ public class EdificioBloque implements Serializable {
 
     @Override
     public String toString() {
-        return "OfiEdificioBloque[ codEdificioBloque=" + codEdificioBloque + " ]";
+        return "EdificioBloque[ codEdificioBloque=" + codEdificioBloque + " ]";
     }
     
 }

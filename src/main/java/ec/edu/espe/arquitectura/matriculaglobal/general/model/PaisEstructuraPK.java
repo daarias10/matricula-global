@@ -23,7 +23,6 @@ public class PaisEstructuraPK implements Serializable {
 
     @Column(name = "cod_pais", nullable = false, length = 2)
     private String codPais;
-    
     @Column(name = "nivel", nullable = false)
     private short nivel;
 

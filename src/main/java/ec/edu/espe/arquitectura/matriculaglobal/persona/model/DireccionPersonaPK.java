@@ -77,7 +77,7 @@ public class DireccionPersonaPK implements Serializable {
 
     @Override
     public String toString() {
-        return "PerDireccionPersonaPK[ codPersona=" + codPersona + ", secDireccion=" + secDireccion + " ]";
+        return "DireccionPersonaPK[ codPersona=" + codPersona + ", secDireccion=" + secDireccion + " ]";
     }
     
 }

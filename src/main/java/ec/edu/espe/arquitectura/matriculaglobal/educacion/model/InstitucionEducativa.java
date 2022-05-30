@@ -136,7 +136,6 @@ public class InstitucionEducativa implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof InstitucionEducativa)) {
             return false;
         }
@@ -149,7 +148,7 @@ public class InstitucionEducativa implements Serializable {
 
     @Override
     public String toString() {
-        return "ec.edu.espe.arquitectura.matriculaglobal.model.EduInstitucionEducativa[ codInstitucionEducativa=" + codInstitucionEducativa + " ]";
+        return "[ codInstitucionEducativa=" + codInstitucionEducativa + " ]";
     }
     
 }
