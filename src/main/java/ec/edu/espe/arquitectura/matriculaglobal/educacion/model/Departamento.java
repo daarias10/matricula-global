@@ -35,10 +35,8 @@ public class Departamento implements Serializable {
     private String descripcion;
     @Column(name = "siglas", nullable = false, length = 32)
     private String siglas;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codDepartamento")
-    private List<Carrera> carreraList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "departamento")
-    private List<Materia> materiaList;
+    private List<Carrera> carreras;
 
     public Departamento() {
     }
@@ -79,20 +77,12 @@ public class Departamento implements Serializable {
         this.siglas = siglas;
     }
 
-    public List<Carrera> getCarreraList() {
-        return carreraList;
+    public List<Carrera> getCarreras() {
+        return carreras;
     }
 
-    public void setCarreraList(List<Carrera> carreraList) {
-        this.carreraList = carreraList;
-    }
-
-    public List<Materia> getMateriaList() {
-        return materiaList;
-    }
-
-    public void setMateriaList(List<Materia> materiaList) {
-        this.materiaList = materiaList;
+    public void setCarreras(List<Carrera> carreraList) {
+        this.carreras = carreraList;
     }
 
     @Override

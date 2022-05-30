@@ -47,7 +47,7 @@ public class Matricula implements Serializable {
     @ManyToOne(optional = false)
     private Persona persona;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "matricula")
-    private List<MatriculaNrc> matriculaNrcList;
+    private List<MatriculaNrc> matriculaNrc;
 
     public Matricula() {
     }
@@ -116,12 +116,12 @@ public class Matricula implements Serializable {
         this.persona = persona;
     }
 
-    public List<MatriculaNrc> getMatriculaNrcList() {
-        return matriculaNrcList;
+    public List<MatriculaNrc> getMatriculaNrc() {
+        return matriculaNrc;
     }
 
-    public void setMatriculaNrcList(List<MatriculaNrc> matriculaNrcList) {
-        this.matriculaNrcList = matriculaNrcList;
+    public void setMatriculaNrc(List<MatriculaNrc> matriculaNrcList) {
+        this.matriculaNrc = matriculaNrcList;
     }
 
     @Override

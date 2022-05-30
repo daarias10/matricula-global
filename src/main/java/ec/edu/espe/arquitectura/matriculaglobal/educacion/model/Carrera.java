@@ -50,13 +50,13 @@ public class Carrera implements Serializable {
     private BigDecimal precioCredito;
     @Column(name = "modalidad", length = 64)
     private String modalidad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCarrera")
-    private List<MallaCarrera> mallaCarreraList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "carrera")
+    private List<MallaCarrera> mallaCarrera;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codCarrera")
     private List<Matricula> matriculaList;
     @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)
     @ManyToOne(optional = false)
-    private Departamento codDepartamento;
+    private Departamento departamento;
 
     public Carrera() {
     }
@@ -153,12 +153,12 @@ public class Carrera implements Serializable {
         this.modalidad = modalidad;
     }
 
-    public List<MallaCarrera> getMallaCarreraList() {
-        return mallaCarreraList;
+    public List<MallaCarrera> getMallaCarrera() {
+        return mallaCarrera;
     }
 
-    public void setMallaCarreraList(List<MallaCarrera> mallaCarreraList) {
-        this.mallaCarreraList = mallaCarreraList;
+    public void setMallaCarrera(List<MallaCarrera> mallaCarreraList) {
+        this.mallaCarrera = mallaCarreraList;
     }
 
     public List<Matricula> getMatriculaList() {
@@ -169,12 +169,12 @@ public class Carrera implements Serializable {
         this.matriculaList = matriculaList;
     }
 
-    public Departamento getCodDepartamento() {
-        return codDepartamento;
+    public Departamento getDepartamento() {
+        return departamento;
     }
 
-    public void setCodDepartamento(Departamento codDepartamento) {
-        this.codDepartamento = codDepartamento;
+    public void setDepartamento(Departamento codDepartamento) {
+        this.departamento = codDepartamento;
     }
 
     @Override

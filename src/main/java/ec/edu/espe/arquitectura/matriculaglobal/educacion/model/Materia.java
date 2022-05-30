@@ -36,16 +36,11 @@ public class Materia implements Serializable {
     @Column(name = "ponderacion", nullable = false, precision = 5, scale = 2)
     private BigDecimal ponderacion;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
-    private List<Nrc> nrcList;
+    private List<Nrc> nrcs;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
-    private List<MallaCarrera> mallaCarreraList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
-    private List<Prerequisito> prerequisitoList;
+    private List<MallaCarrera> carreras;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia1")
-    private List<Prerequisito> prerequisitoList1;
-    @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)
-    @ManyToOne(optional = false)
-    private Departamento departamento;
+    private List<Prerequisito> prerequisitos;
 
     public Materia() {
     }
@@ -98,44 +93,28 @@ public class Materia implements Serializable {
         this.ponderacion = ponderacion;
     }
 
-    public List<Nrc> getNrcList() {
-        return nrcList;
+    public List<Nrc> getNrcs() {
+        return nrcs;
     }
 
-    public void setNrcList(List<Nrc> list) {
-        this.nrcList = list;
+    public void setNrcs(List<Nrc> list) {
+        this.nrcs = list;
     }
 
-    public List<MallaCarrera> getMallaCarreraList() {
-        return mallaCarreraList;
+    public List<MallaCarrera> getCarreras() {
+        return carreras;
     }
 
-    public void setMallaCarreraList(List<MallaCarrera> mallaCarreraList) {
-        this.mallaCarreraList = mallaCarreraList;
+    public void setCarreras(List<MallaCarrera> mallaCarreraList) {
+        this.carreras = mallaCarreraList;
     }
 
-    public List<Prerequisito> getPrerequisitoList() {
-        return prerequisitoList;
+    public List<Prerequisito> getPrerequisitos() {
+        return prerequisitos;
     }
 
-    public void setPrerequisitoList(List<Prerequisito> prerequisitoList) {
-        this.prerequisitoList = prerequisitoList;
-    }
-
-    public List<Prerequisito> getPrerequisitoList1() {
-        return prerequisitoList1;
-    }
-
-    public void setPrerequisitoList1(List<Prerequisito> prerequisitoList1) {
-        this.prerequisitoList1 = prerequisitoList1;
-    }
-
-    public Departamento getDepartamento() {
-        return departamento;
-    }
-
-    public void setDepartamento(Departamento departamento) {
-        this.departamento = departamento;
+    public void setPrerequisitos(List<Prerequisito> prerequisitoList1) {
+        this.prerequisitos = prerequisitoList1;
     }
 
     @Override

@@ -31,7 +31,7 @@ public class MallaCarrera implements Serializable {
     private Integer nivel;
     @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
     @ManyToOne(optional = false)
-    private Carrera codCarrera;
+    private Carrera carrera;
     @JoinColumns({
         @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
         @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
@@ -61,12 +61,12 @@ public class MallaCarrera implements Serializable {
         this.nivel = nivel;
     }
 
-    public Carrera getCodCarrera() {
-        return codCarrera;
+    public Carrera getCarrera() {
+        return carrera;
     }
 
-    public void setCodCarrera(Carrera codCarrera) {
-        this.codCarrera = codCarrera;
+    public void setCarrera(Carrera codCarrera) {
+        this.carrera = codCarrera;
     }
 
     public Materia getMateria() {

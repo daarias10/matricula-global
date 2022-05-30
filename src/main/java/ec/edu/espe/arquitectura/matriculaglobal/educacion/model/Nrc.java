@@ -47,9 +47,9 @@ public class Nrc implements Serializable {
     @ManyToOne(optional = false)
     private Persona codPersona;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrc")
-    private List<NrcHorario> nrcHorarioList;
+    private List<NrcHorario> nrcHorario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrc")
-    private List<MatriculaNrc> matriculaNrcList;
+    private List<MatriculaNrc> matriculaNrc;
 
     public Nrc() {
     }
@@ -114,20 +114,20 @@ public class Nrc implements Serializable {
         this.codPersona = codPersona;
     }
 
-    public List<NrcHorario> getNrcHorarioList() {
-        return nrcHorarioList;
+    public List<NrcHorario> getNrcHorario() {
+        return nrcHorario;
     }
 
-    public void setNrcHorarioList(List<NrcHorario> nrcHorarioList) {
-        this.nrcHorarioList = nrcHorarioList;
+    public void setNrcHorario(List<NrcHorario> nrcHorarioList) {
+        this.nrcHorario = nrcHorarioList;
     }
 
-    public List<MatriculaNrc> getMatriculaNrcList() {
-        return matriculaNrcList;
+    public List<MatriculaNrc> getMatriculaNrc() {
+        return matriculaNrc;
     }
 
-    public void setMatriculaNrcList(List<MatriculaNrc> matriculaNrcList) {
-        this.matriculaNrcList = matriculaNrcList;
+    public void setMatriculaNrc(List<MatriculaNrc> matriculaNrcList) {
+        this.matriculaNrc = matriculaNrcList;
     }
 
     @Override

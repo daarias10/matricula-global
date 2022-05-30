@@ -41,8 +41,6 @@ public class Periodo implements Serializable {
     private Date fechaFin;
     @Column(name = "parciales", nullable = false)
     private short parciales;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "periodo")
-    private Nrc nrc;
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "codPeriodo")
     private Matricula matricula;
 
@@ -99,14 +97,6 @@ public class Periodo implements Serializable {
 
     public void setParciales(short parciales) {
         this.parciales = parciales;
-    }
-
-    public Nrc getNrc() {
-        return nrc;
-    }
-
-    public void setNrc(Nrc nrc) {
-        this.nrc = nrc;
     }
 
     public Matricula getMatricula() {

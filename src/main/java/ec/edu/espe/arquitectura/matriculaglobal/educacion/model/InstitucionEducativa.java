@@ -44,9 +44,6 @@ public class InstitucionEducativa implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @JoinColumn(name = "cod_ubicacion_geo_int", referencedColumnName = "cod_ubicacion_geo_int", nullable = false)
-    @ManyToOne(optional = false)
-    private UbicacionGeografica codUbicacionGeoInt;
 
     public InstitucionEducativa() {
     }
@@ -117,14 +114,6 @@ public class InstitucionEducativa implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public UbicacionGeografica getCodUbicacionGeoInt() {
-        return codUbicacionGeoInt;
-    }
-
-    public void setCodUbicacionGeoInt(UbicacionGeografica codUbicacionGeoInt) {
-        this.codUbicacionGeoInt = codUbicacionGeoInt;
     }
 
     @Override

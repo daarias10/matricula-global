@@ -15,8 +15,8 @@
  */
 package ec.edu.espe.arquitectura.matriculaglobal.general.model;
 
-import ec.edu.espe.arquitectura.matriculaglobal.educacion.model.InstitucionEducativa;
 import ec.edu.espe.arquitectura.matriculaglobal.persona.model.Persona;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -56,8 +56,8 @@ public class UbicacionGeografica implements Serializable {
     @ManyToOne
     private Pais codPais;
     @JoinColumns({
-        @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais"),
-        @JoinColumn(name = "nivel", referencedColumnName = "nivel", nullable = false)})
+            @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais"),
+            @JoinColumn(name = "nivel", referencedColumnName = "nivel", nullable = false)})
     @ManyToOne(optional = false)
     private PaisEstructura paisEstructura;
     @OneToMany(mappedBy = "codUbicacionGeoPadre")
@@ -67,8 +67,6 @@ public class UbicacionGeografica implements Serializable {
     private UbicacionGeografica codUbicacionGeoPadre;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lugarNacimiento")
     private List<Persona> personaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codUbicacionGeoInt")
-    private List<InstitucionEducativa> institucionEducativaList;
 
     public UbicacionGeografica() {
     }
@@ -205,14 +203,6 @@ public class UbicacionGeografica implements Serializable {
         this.personaList = personaList;
     }
 
-    public List<InstitucionEducativa> getInstitucionEducativaList() {
-        return institucionEducativaList;
-    }
-
-    public void setInstitucionEducativaList(List<InstitucionEducativa> institucionEducativaList) {
-        this.institucionEducativaList = institucionEducativaList;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -222,7 +212,7 @@ public class UbicacionGeografica implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        
+
         if (!(object instanceof UbicacionGeografica)) {
             return false;
         }
@@ -237,5 +227,5 @@ public class UbicacionGeografica implements Serializable {
     public String toString() {
         return "[ codUbicacionGeoInt=" + codUbicacionGeoInt + " ]";
     }
-    
+
 }
