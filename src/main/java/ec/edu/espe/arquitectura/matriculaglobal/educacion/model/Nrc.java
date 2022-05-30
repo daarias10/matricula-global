@@ -17,14 +17,13 @@ package ec.edu.espe.arquitectura.matriculaglobal.educacion.model;
 
 import ec.edu.espe.arquitectura.matriculaglobal.persona.model.Persona;
 
-import javax.naming.Name;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "edu_nrc", uniqueConstraints = {
-        @UniqueConstraint(columnNames = {"cod_periodo"})})
+@Table(name = "edu_nrc", uniqueConstraints = {@UniqueConstraint(columnNames = {"cod_periodo"})})
 
 public class Nrc implements Serializable {
 
@@ -37,15 +36,13 @@ public class Nrc implements Serializable {
     private short cupoRegistrado;
     @Column(name = "nombre", length = 255)
     private String nombre;
-    @Column(name = "cod_persona", nullable = false)
-    private int codPersona;
-    @Column(name = "cod_periodo", nullable = false)
-    private int codPeriodo;
-    @Column(name = "cod_materia", nullable = false)
-    private int CodMateria;
-    @JoinColumns({
-            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false),
-            @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)})
+    @Column(name = "cod_persona", nullable = false, insertable = false, updatable = false)
+    private Integer codPersona;
+    @Column(name = "cod_periodo", nullable = false, insertable = false, updatable = false)
+    private Integer codPeriodo;
+    @Column(name = "cod_materia", nullable = false, insertable = false, updatable = false)
+    private Integer codMateria;
+    @JoinColumns({@JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false), @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Materia materia;
     @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false)
@@ -96,6 +93,18 @@ public class Nrc implements Serializable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public void setCodPersona(Integer codPersona) {
+        this.codPersona = codPersona;
+    }
+
+    public void setCodPeriodo(Integer codPeriodo) {
+        this.codPeriodo = codPeriodo;
+    }
+
+    public void setCodMateria(Integer codMateria) {
+        this.codMateria = codMateria;
     }
 
     public Materia getMateria() {
@@ -154,13 +163,6 @@ public class Nrc implements Serializable {
         this.codPeriodo = codPeriodo;
     }
 
-    public int getCodMateria() {
-        return CodMateria;
-    }
-
-    public void setCodMateria(int codMateria) {
-        CodMateria = codMateria;
-    }
 
     @Override
     public int hashCode() {

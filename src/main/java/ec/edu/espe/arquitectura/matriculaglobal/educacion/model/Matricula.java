@@ -37,12 +37,12 @@ public class Matricula implements Serializable {
     private Date fecha;
     @Column(name = "costo", nullable = false)
     private double costo;
-    @Column(name = "cod_persona", nullable = false)
-    private int codPersona;
-    @Column(name = "cod_periodo", nullable = false)
-    private int codPeriodo;
-    @Column(name = "cod_carrera", nullable = false)
-    private int codCarrera;
+    @Column(name = "cod_persona", nullable = false, insertable = false ,updatable = false)
+    private Integer codPersona;
+    @Column(name = "cod_periodo", nullable = false, insertable = false ,updatable = false)
+    private Integer codPeriodo;
+    @Column(name = "cod_carrera", nullable = false, insertable = false ,updatable = false)
+    private Integer codCarrera;
     @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
     @ManyToOne(optional = false)
     private Carrera Carrera;
@@ -114,7 +114,7 @@ public class Matricula implements Serializable {
         this.matriculaNrc = matriculaNrcList;
     }
 
-    public int getCodPersona() {
+    public Integer getCodPersona() {
         return codPersona;
     }
 
@@ -122,7 +122,7 @@ public class Matricula implements Serializable {
         this.codPersona = codPersona;
     }
 
-    public int getCodPeriodo() {
+    public Integer getCodPeriodo() {
         return codPeriodo;
     }
 
@@ -130,7 +130,7 @@ public class Matricula implements Serializable {
         this.codPeriodo = codPeriodo;
     }
 
-    public int getCodCarrera() {
+    public Integer getCodCarrera() {
         return codCarrera;
     }
 

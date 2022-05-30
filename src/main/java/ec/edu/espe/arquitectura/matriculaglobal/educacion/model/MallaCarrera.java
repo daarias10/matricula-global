@@ -29,7 +29,7 @@ public class MallaCarrera implements Serializable {
     private Integer codMateriacarrera;
     @Column(name = "nivel")
     private Integer nivel;
-    @Column(name = "cod_carrera", nullable = false)
+    @Column(name = "cod_carrera", nullable = false, insertable = false ,updatable = false)
     private Integer codCarrera;
     @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
     @ManyToOne(optional = false)

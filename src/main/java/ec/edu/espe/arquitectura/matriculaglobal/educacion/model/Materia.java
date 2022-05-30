@@ -39,7 +39,7 @@ public class Materia implements Serializable {
     private List<Nrc> nrcs;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia")
     private List<MallaCarrera> carreras;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "materia1")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "prerequisito")
     private List<Prerequisito> prerequisitos;
 
     public Materia() {

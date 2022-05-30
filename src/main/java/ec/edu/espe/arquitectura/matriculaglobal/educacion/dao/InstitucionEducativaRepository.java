@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface InstitucionEducativaRepository extends JpaRepository<InstitucionEducativa, Integer> {
 
-    List<InstitucionEducativa> findByindByNombreLike(String nombre);
+    List<InstitucionEducativa> findByNombreLike(String nombre);
 }

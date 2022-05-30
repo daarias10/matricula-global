@@ -29,7 +29,7 @@ public class Prerequisito implements Serializable {
     private Integer codPrerequisito;
     @Column(name = "tipo", nullable = false, length = 3)
     private String tipo;
-    @Column(name = "cod_materia",nullable = false)
+    @Column(name = "cod_materia",nullable = false, insertable = false ,updatable = false)
     private Integer codMateria;
     @JoinColumns({
             @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
