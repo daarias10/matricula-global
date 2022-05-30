@@ -37,12 +37,18 @@ public class Matricula implements Serializable {
     private Date fecha;
     @Column(name = "costo", nullable = false)
     private double costo;
+    @Column(name = "cod_persona", nullable = false)
+    private int codPersona;
+    @Column(name = "cod_periodo", nullable = false)
+    private int codPeriodo;
+    @Column(name = "cod_carrera", nullable = false)
+    private int codCarrera;
     @JoinColumn(name = "cod_carrera", referencedColumnName = "cod_carrera", nullable = false)
     @ManyToOne(optional = false)
-    private Carrera codCarrera;
+    private Carrera Carrera;
     @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false)
     @OneToOne(optional = false)
-    private Periodo codPeriodo;
+    private Periodo Periodo;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Persona persona;
@@ -92,22 +98,6 @@ public class Matricula implements Serializable {
         this.costo = costo;
     }
 
-    public Carrera getCodCarrera() {
-        return codCarrera;
-    }
-
-    public void setCodCarrera(Carrera codCarrera) {
-        this.codCarrera = codCarrera;
-    }
-
-    public Periodo getCodPeriodo() {
-        return codPeriodo;
-    }
-
-    public void setCodPeriodo(Periodo codPeriodo) {
-        this.codPeriodo = codPeriodo;
-    }
-
     public Persona getPersona() {
         return persona;
     }
@@ -122,6 +112,46 @@ public class Matricula implements Serializable {
 
     public void setMatriculaNrc(List<MatriculaNrc> matriculaNrcList) {
         this.matriculaNrc = matriculaNrcList;
+    }
+
+    public int getCodPersona() {
+        return codPersona;
+    }
+
+    public void setCodPersona(int codPersona) {
+        this.codPersona = codPersona;
+    }
+
+    public int getCodPeriodo() {
+        return codPeriodo;
+    }
+
+    public void setCodPeriodo(int codPeriodo) {
+        this.codPeriodo = codPeriodo;
+    }
+
+    public int getCodCarrera() {
+        return codCarrera;
+    }
+
+    public void setCodCarrera(int codCarrera) {
+        this.codCarrera = codCarrera;
+    }
+
+    public ec.edu.espe.arquitectura.matriculaglobal.educacion.model.Carrera getCarrera() {
+        return Carrera;
+    }
+
+    public void setCarrera(ec.edu.espe.arquitectura.matriculaglobal.educacion.model.Carrera carrera) {
+        Carrera = carrera;
+    }
+
+    public ec.edu.espe.arquitectura.matriculaglobal.educacion.model.Periodo getPeriodo() {
+        return Periodo;
+    }
+
+    public void setPeriodo(ec.edu.espe.arquitectura.matriculaglobal.educacion.model.Periodo periodo) {
+        Periodo = periodo;
     }
 
     @Override

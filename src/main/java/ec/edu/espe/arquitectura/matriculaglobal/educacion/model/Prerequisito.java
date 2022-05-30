@@ -29,6 +29,8 @@ public class Prerequisito implements Serializable {
     private Integer codPrerequisito;
     @Column(name = "tipo", nullable = false, length = 3)
     private String tipo;
+    @Column(name = "cod_materia",nullable = false)
+    private Integer codMateria;
     @JoinColumns({
             @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false),
             @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
@@ -38,7 +40,7 @@ public class Prerequisito implements Serializable {
             @JoinColumn(name = "cod_materia_prerequisito", referencedColumnName = "cod_materia", nullable = false),
             @JoinColumn(name = "edu_cod_departamento", referencedColumnName = "cod_departamento", nullable = false)})
     @ManyToOne(optional = false)
-    private Materia materia1;
+    private Materia prerequisito;
 
     public Prerequisito() {
     }
@@ -71,12 +73,20 @@ public class Prerequisito implements Serializable {
         this.materia = materia;
     }
 
-    public Materia getmateria1() {
-        return materia1;
+    public Integer getCodMateria() {
+        return codMateria;
     }
 
-    public void setMateria1(Materia materia1) {
-        this.materia1 = materia1;
+    public void setCodMateria(Integer codMateria) {
+        this.codMateria = codMateria;
+    }
+
+    public Materia getPrerequisito() {
+        return prerequisito;
+    }
+
+    public void setPrerequisito(Materia prerequisito) {
+        this.prerequisito = prerequisito;
     }
 
     @Override

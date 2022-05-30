@@ -16,13 +16,15 @@
 package ec.edu.espe.arquitectura.matriculaglobal.educacion.model;
 
 import ec.edu.espe.arquitectura.matriculaglobal.persona.model.Persona;
+
+import javax.naming.Name;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-import javax.persistence.*;
 
 @Entity
 @Table(name = "edu_nrc", uniqueConstraints = {
-    @UniqueConstraint(columnNames = {"cod_periodo"})})
+        @UniqueConstraint(columnNames = {"cod_periodo"})})
 
 public class Nrc implements Serializable {
 
@@ -35,9 +37,15 @@ public class Nrc implements Serializable {
     private short cupoRegistrado;
     @Column(name = "nombre", length = 255)
     private String nombre;
+    @Column(name = "cod_persona", nullable = false)
+    private int codPersona;
+    @Column(name = "cod_periodo", nullable = false)
+    private int codPeriodo;
+    @Column(name = "cod_materia", nullable = false)
+    private int CodMateria;
     @JoinColumns({
-        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)})
+            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Materia materia;
     @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false)
@@ -45,7 +53,7 @@ public class Nrc implements Serializable {
     private Periodo periodo;
     @JoinColumn(name = "cod_persona", referencedColumnName = "cod_persona", nullable = false)
     @ManyToOne(optional = false)
-    private Persona codPersona;
+    private Persona Persona;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrc")
     private List<NrcHorario> nrcHorario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "nrc")
@@ -106,14 +114,6 @@ public class Nrc implements Serializable {
         this.periodo = periodo;
     }
 
-    public Persona getCodPersona() {
-        return codPersona;
-    }
-
-    public void setCodPersona(Persona codPersona) {
-        this.codPersona = codPersona;
-    }
-
     public List<NrcHorario> getNrcHorario() {
         return nrcHorario;
     }
@@ -130,6 +130,38 @@ public class Nrc implements Serializable {
         this.matriculaNrc = matriculaNrcList;
     }
 
+    public int getCodPersona() {
+        return codPersona;
+    }
+
+    public void setCodPersona(int codPersona) {
+        this.codPersona = codPersona;
+    }
+
+    public ec.edu.espe.arquitectura.matriculaglobal.persona.model.Persona getPersona() {
+        return Persona;
+    }
+
+    public void setPersona(ec.edu.espe.arquitectura.matriculaglobal.persona.model.Persona persona) {
+        Persona = persona;
+    }
+
+    public int getCodPeriodo() {
+        return codPeriodo;
+    }
+
+    public void setCodPeriodo(int codPeriodo) {
+        this.codPeriodo = codPeriodo;
+    }
+
+    public int getCodMateria() {
+        return CodMateria;
+    }
+
+    public void setCodMateria(int codMateria) {
+        CodMateria = codMateria;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -143,15 +175,12 @@ public class Nrc implements Serializable {
             return false;
         }
         Nrc other = (Nrc) object;
-        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
-            return false;
-        }
-        return true;
+        return (this.pk != null || other.pk == null) && (this.pk == null || this.pk.equals(other.pk));
     }
 
     @Override
     public String toString() {
         return "[ nrcPK=" + pk + " ]";
     }
-    
+
 }

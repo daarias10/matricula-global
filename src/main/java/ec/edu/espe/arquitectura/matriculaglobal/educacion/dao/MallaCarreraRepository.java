@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface MallaCarreraRepository extends JpaRepository<MallaCarrera, Integer> {
 
+    List<MallaCarrera> findByCodCarrera(Integer carrera);
+    List<MallaCarrera> findByCodCarreraAndNivel(Integer carrera, Integer nivel);
 }

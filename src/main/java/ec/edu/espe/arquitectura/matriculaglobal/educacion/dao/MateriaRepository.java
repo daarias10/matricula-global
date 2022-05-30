@@ -8,6 +8,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface MateriaRepository extends JpaRepository<Materia, MateriaPK> {
-    List<Materia> FindByNombreLike(String nombre);
+    List<Materia> findByNombreLike(String nombrePattern);
 
 }

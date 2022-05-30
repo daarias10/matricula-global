@@ -18,6 +18,7 @@ package ec.edu.espe.arquitectura.matriculaglobal.educacion.model;
 import ec.edu.espe.arquitectura.matriculaglobal.orgfisica.model.Aula;
 
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.Date;
 import javax.persistence.*;
 
@@ -29,14 +30,18 @@ public class NrcHorario implements Serializable {
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
     private NrcHorarioPK pk;
-
+    @Column(name = "cod_aula", nullable = false)
+    private int codAula;
     @Column(name = "hora_inicio", nullable = false)
     @Temporal(TemporalType.TIME)
-    private Date horaInicio;
-
+    private Time horaInicio;
+    @Column(name = "dia_semana", nullable = false)
+    private String diaSemana;
+    @Column(name = "cod_materia", nullable = false)
+    private int codMateria;
     @Column(name = "hora_fin", nullable = false)
     @Temporal(TemporalType.TIME)
-    private Date horaFin;
+    private Time horaFin;
     @JoinColumns({
             @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
             @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
@@ -63,19 +68,19 @@ public class NrcHorario implements Serializable {
         this.pk = nrcHorarioPK;
     }
 
-    public Date getHoraInicio() {
+    public Time getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Date horaInicio) {
+    public void setHoraInicio(Time horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public Date getHoraFin() {
+    public Time getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(Date horaFin) {
+    public void setHoraFin(Time horaFin) {
         this.horaFin = horaFin;
     }
 
@@ -93,6 +98,30 @@ public class NrcHorario implements Serializable {
 
     public void setAula(Aula aula) {
         this.aula = aula;
+    }
+
+    public int getCodAula() {
+        return codAula;
+    }
+
+    public void setCodAula(int codAula) {
+        this.codAula = codAula;
+    }
+
+    public String getDiaSemana() {
+        return diaSemana;
+    }
+
+    public void setDiaSemana(String diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+
+    public int getCodMateria() {
+        return codMateria;
+    }
+
+    public void setCodMateria(int codMateria) {
+        this.codMateria = codMateria;
     }
 
     @Override
