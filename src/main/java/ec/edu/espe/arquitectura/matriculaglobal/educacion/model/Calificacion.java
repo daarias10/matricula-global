@@ -24,7 +24,7 @@ import javax.persistence.*;
 
 public class Calificacion implements Serializable {
 
-    private static final long serialVersionUID = 4554L;
+    private static final long serialVersionUID = 31322L;
     @EmbeddedId
     protected CalificacionPK calificacionPK;
     @Column(name = "nota1", precision = 5, scale = 2)
