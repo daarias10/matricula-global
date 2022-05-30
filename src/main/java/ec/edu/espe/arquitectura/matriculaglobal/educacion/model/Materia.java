@@ -26,7 +26,7 @@ public class Materia implements Serializable {
 
     private static final long serialVersionUID = 12349755L;
     @EmbeddedId
-    protected MateriaPK materiaPK;
+    private MateriaPK materiaPK;
     @Column(name = "nombre", nullable = false, length = 255)
     private String nombre;
     @Column(name = "creditos", nullable = false, precision = 4, scale = 2)

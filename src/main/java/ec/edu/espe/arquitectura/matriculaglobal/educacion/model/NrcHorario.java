@@ -27,7 +27,7 @@ public class NrcHorario implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    protected NrcHorarioPK nrcHorarioPK;
+    private NrcHorarioPK nrcHorarioPK;
     
     @Column(name = "hora_inicio", nullable = false)
     @Temporal(TemporalType.TIME)

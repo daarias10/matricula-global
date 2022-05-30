@@ -29,7 +29,7 @@ public class Matricula implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    protected MatriculaPK matriculaPK;
+    private MatriculaPK matriculaPK;
     @Column(name = "tipo", nullable = false, length = 3)
     private String tipo;
     @Column(name = "fecha", nullable = false)

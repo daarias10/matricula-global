@@ -28,7 +28,7 @@ public class Nrc implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    protected NrcPK nrcPK;
+    private NrcPK nrcPK;
     @Column(name = "cupo_disponible", nullable = false)
     private short cupoDisponible;
     @Column(name = "cupo_registrado", nullable = false)

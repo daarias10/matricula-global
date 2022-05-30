@@ -26,7 +26,7 @@ public class Calificacion implements Serializable {
 
     private static final long serialVersionUID = 31322L;
     @EmbeddedId
-    protected CalificacionPK calificacionPK;
+    private CalificacionPK calificacionPK;
     @Column(name = "nota1", precision = 5, scale = 2)
     private BigDecimal nota1;
     @Column(name = "nota2", precision = 5, scale = 2)

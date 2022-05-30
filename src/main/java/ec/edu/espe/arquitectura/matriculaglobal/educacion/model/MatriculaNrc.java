@@ -27,7 +27,7 @@ public class MatriculaNrc implements Serializable {
 
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
-    protected MatriculaNrcPK matriculaNrcPK;
+    private MatriculaNrcPK matriculaNrcPK;
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
     @Column(name = "numero", nullable = false)
