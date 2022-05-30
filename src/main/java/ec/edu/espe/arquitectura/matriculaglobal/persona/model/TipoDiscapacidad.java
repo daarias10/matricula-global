@@ -13,11 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-    package ec.edu.espe.arquitectura.matriculaglobal.persona.model;
+package ec.edu.espe.arquitectura.matriculaglobal.persona.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -40,9 +39,7 @@ public class TipoDiscapacidad implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(mappedBy = "codTipoDiscapacidad")
-    private List<Persona> personaList;
-
+    
     public TipoDiscapacidad() {
     }
 
@@ -96,14 +93,6 @@ public class TipoDiscapacidad implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public List<Persona> getPersonaList() {
-        return personaList;
-    }
-
-    public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
     }
 
     @Override

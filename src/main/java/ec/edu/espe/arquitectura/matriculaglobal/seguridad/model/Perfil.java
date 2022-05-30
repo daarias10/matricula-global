@@ -44,7 +44,7 @@ public class Perfil implements Serializable {
     private int version;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
     private List<UsuarioPerfil> usuarioPerfilList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "perfil")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "perfil")
     private List<PerfilFuncionalidad> perfilFuncionalidadList;
 
     public Perfil() {

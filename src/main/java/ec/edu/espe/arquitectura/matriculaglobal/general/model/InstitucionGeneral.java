@@ -27,6 +27,8 @@ public class InstitucionGeneral implements Serializable {
     @Id
     @Column(name = "ruc", nullable = false, length = 13)
     private String ruc;
+    @Column(name = "cod_ubicacion_geo_int", nullable = false)
+    private Integer codUbicacionGeoInt;
     @Column(name = "razon_social", nullable = false, length = 128)
     private String razonSocial;
     @Column(name = "nombre_comercial", nullable = false, length = 128)
@@ -41,9 +43,9 @@ public class InstitucionGeneral implements Serializable {
     private String urlSistema;
     @Column(name = "version", nullable = false)
     private int version;
-    @JoinColumn(name = "cod_ubicacion_geo_int", referencedColumnName = "cod_ubicacion_geo_int")
+    @JoinColumn(name = "cod_ubicacion_geo_int", referencedColumnName = "cod_ubicacion_geo_int", insertable = false, updatable = false)
     @ManyToOne
-    private UbicacionGeografica codUbicacionGeoInt;
+    private UbicacionGeografica ubicacionGeoInt;
 
     public InstitucionGeneral() {
     }
@@ -58,6 +60,14 @@ public class InstitucionGeneral implements Serializable {
 
     public void setRuc(String ruc) {
         this.ruc = ruc;
+    }
+
+    public Integer getCodUbicacionGeoInt() {
+        return codUbicacionGeoInt;
+    }
+
+    public void setCodUbicacionGeoInt(Integer codUbicacionGeoInt) {
+        this.codUbicacionGeoInt = codUbicacionGeoInt;
     }
 
     public String getRazonSocial() {
@@ -116,12 +126,12 @@ public class InstitucionGeneral implements Serializable {
         this.version = version;
     }
 
-    public UbicacionGeografica getCodUbicacionGeoInt() {
-        return codUbicacionGeoInt;
+    public UbicacionGeografica getUbicacionGeoInt() {
+        return ubicacionGeoInt;
     }
 
-    public void setCodUbicacionGeoInt(UbicacionGeografica codUbicacionGeoInt) {
-        this.codUbicacionGeoInt = codUbicacionGeoInt;
+    public void setUbicacionGeoInt(UbicacionGeografica ubicacionGeoInt) {
+        this.ubicacionGeoInt = ubicacionGeoInt;
     }
 
     @Override

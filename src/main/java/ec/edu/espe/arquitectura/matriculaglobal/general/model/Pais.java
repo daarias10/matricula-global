@@ -1,6 +1,5 @@
 package ec.edu.espe.arquitectura.matriculaglobal.general.model;
 
-import ec.edu.espe.arquitectura.matriculaglobal.persona.model.Persona;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -36,11 +35,7 @@ public class Pais implements Serializable {
     private List<PaisEstructura> paisEstructuraList;
     @OneToMany(mappedBy = "codPais")
     private List<UbicacionGeografica> ubicacionGeograficaList;
-    @OneToMany(mappedBy = "codPaisNacimiento")
-    private List<Persona> personaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "nacionalidad")
-    private List<Persona> personaList1;
-
+    
     public Pais() {
     }
 
@@ -134,22 +129,6 @@ public class Pais implements Serializable {
 
     public void setUbicacionGeograficaList(List<UbicacionGeografica> ubicacionGeograficaList) {
         this.ubicacionGeograficaList = ubicacionGeograficaList;
-    }
-
-    public List<Persona> getPersonaList() {
-        return personaList;
-    }
-
-    public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
-    }
-
-    public List<Persona> getPersonaList1() {
-        return personaList1;
-    }
-
-    public void setPersonaList1(List<Persona> personaList1) {
-        this.personaList1 = personaList1;
     }
 
     @Override

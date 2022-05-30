@@ -17,7 +17,6 @@ package ec.edu.espe.arquitectura.matriculaglobal.orgfisica.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -39,9 +38,7 @@ public class TipoAula implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(mappedBy = "codTipoAula")
-    private List<Aula> aulaList;
-
+    
     public TipoAula() {
     }
 
@@ -95,14 +92,6 @@ public class TipoAula implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public List<Aula> getAulaList() {
-        return aulaList;
-    }
-
-    public void setAulaList(List<Aula> aulaList) {
-        this.aulaList = aulaList;
     }
 
     @Override

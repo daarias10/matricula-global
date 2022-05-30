@@ -17,7 +17,6 @@ package ec.edu.espe.arquitectura.matriculaglobal.persona.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.*;
 
 @Entity
@@ -40,8 +39,6 @@ public class TipoDocumento implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoDocumento")
-    private List<DocumentoPersona> documentoPersonaList;
 
     public TipoDocumento() {
     }
@@ -96,14 +93,6 @@ public class TipoDocumento implements Serializable {
 
     public void setVersion(int version) {
         this.version = version;
-    }
-
-    public List<DocumentoPersona> getDocumentoPersonaList() {
-        return documentoPersonaList;
-    }
-
-    public void setDocumentoPersonaList(List<DocumentoPersona> documentoPersonaList) {
-        this.documentoPersonaList = documentoPersonaList;
     }
 
     @Override

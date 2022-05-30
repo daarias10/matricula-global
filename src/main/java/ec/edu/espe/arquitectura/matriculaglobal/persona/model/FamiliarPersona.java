@@ -25,7 +25,7 @@ public class FamiliarPersona implements Serializable {
 
     private static final long serialVersionUID = 123445L;
     @EmbeddedId
-    protected FamiliarPersonaPK familiarPersonaPK;
+    private FamiliarPersonaPK pk;
     @Column(name = "tipo_familiar", nullable = false, length = 3)
     private String tipoFamiliar;
     @Column(name = "nombre", nullable = false, length = 128)
@@ -56,15 +56,15 @@ public class FamiliarPersona implements Serializable {
     }
 
     public FamiliarPersona(int codPersona, short secFamiliarPersona) {
-        this.familiarPersonaPK = new FamiliarPersonaPK(codPersona, secFamiliarPersona);
+        this.pk = new FamiliarPersonaPK(codPersona, secFamiliarPersona);
     }
 
     public FamiliarPersonaPK getFamiliarPersonaPK() {
-        return familiarPersonaPK;
+        return pk;
     }
 
-    public void setFamiliarPersonaPK(FamiliarPersonaPK familiarPersonaPK) {
-        this.familiarPersonaPK = familiarPersonaPK;
+    public void setFamiliarPersonaPK(FamiliarPersonaPK pk) {
+        this.pk = pk;
     }
 
     public String getTipoFamiliar() {
@@ -158,7 +158,7 @@ public class FamiliarPersona implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (familiarPersonaPK != null ? familiarPersonaPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -168,7 +168,7 @@ public class FamiliarPersona implements Serializable {
             return false;
         }
         FamiliarPersona other = (FamiliarPersona) object;
-        if ((this.familiarPersonaPK == null && other.familiarPersonaPK != null) || (this.familiarPersonaPK != null && !this.familiarPersonaPK.equals(other.familiarPersonaPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -176,7 +176,7 @@ public class FamiliarPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "[ familiarPersonaPK=" + familiarPersonaPK + " ]";
+        return "[ pk=" + pk + " ]";
     }
     
 }

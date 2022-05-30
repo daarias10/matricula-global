@@ -30,6 +30,8 @@ public class Funcionalidad implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_funcionalidad", nullable = false)
     private Integer codFuncionalidad;
+    @Column(name = "cod_modulo", nullable = false)
+    private Integer codModulo;
     @Column(name = "url_principal", nullable = false, length = 200)
     private String urlPrincipal;
     @Column(name = "nombre", nullable = false, length = 200)
@@ -47,9 +49,9 @@ public class Funcionalidad implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @JoinColumn(name = "cod_modulo", referencedColumnName = "cod_modulo", nullable = false)
+    @JoinColumn(name = "cod_modulo", referencedColumnName = "cod_modulo", nullable = false, insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Modulo codModulo;
+    private Modulo modulo;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "funcionalidad")
     private List<PerfilFuncionalidad> perfilFuncionalidadList;
 
@@ -66,6 +68,14 @@ public class Funcionalidad implements Serializable {
 
     public void setCodFuncionalidad(Integer codFuncionalidad) {
         this.codFuncionalidad = codFuncionalidad;
+    }
+    
+    public Integer getCodModulo() {
+        return codModulo;
+    }
+
+    public void setCodModulo(Integer codModulo) {
+        this.codModulo = codModulo;
     }
 
     public String getUrlPrincipal() {
@@ -132,12 +142,12 @@ public class Funcionalidad implements Serializable {
         this.version = version;
     }
 
-    public Modulo getCodModulo() {
-        return codModulo;
+    public Modulo getModulo() {
+        return modulo;
     }
 
-    public void setCodModulo(Modulo codModulo) {
-        this.codModulo = codModulo;
+    public void setModulo(Modulo modulo) {
+        this.modulo = modulo;
     }
 
     public List<PerfilFuncionalidad> getPerfilFuncionalidadList() {

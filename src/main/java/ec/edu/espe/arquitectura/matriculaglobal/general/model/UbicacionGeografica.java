@@ -15,8 +15,6 @@
  */
 package ec.edu.espe.arquitectura.matriculaglobal.general.model;
 
-import ec.edu.espe.arquitectura.matriculaglobal.persona.model.Persona;
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -31,8 +29,14 @@ public class UbicacionGeografica implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cod_ubicacion_geo_int", nullable = false)
     private Integer codUbicacionGeoInt;
-    @Column(name = "cod_ubicacion_geografica", nullable = false, length = 20)
+    @Column(name = "cod_pais", nullable = false)
+    private String codPais;
+    @Column(name = "cod_nivel", nullable = false)
+    private Short nivel;
+    @Column(name = "cod_ubicacion_geografica", nullable = false)
     private String codUbicacionGeografica;
+    @Column(name = "cod_ubicacion_geo_padre", nullable = false, length = 20)
+    private Integer codUbicacionGeoPadre;
     @Column(name = "nombre", nullable = false, length = 100)
     private String nombre;
     @Column(name = "codigo_area_telefono", length = 4)
@@ -54,19 +58,17 @@ public class UbicacionGeografica implements Serializable {
     private List<InstitucionGeneral> institucionList;
     @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais", nullable = false, insertable = false, updatable = false)
     @ManyToOne
-    private Pais codPais;
+    private Pais pais;
     @JoinColumns({
-            @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais"),
-            @JoinColumn(name = "nivel", referencedColumnName = "nivel", nullable = false)})
+        @JoinColumn(name = "cod_pais", referencedColumnName = "cod_pais", nullable = false, insertable = false, updatable = false),
+        @JoinColumn(name = "nivel", referencedColumnName = "nivel", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private PaisEstructura paisEstructura;
     @OneToMany(mappedBy = "codUbicacionGeoPadre")
     private List<UbicacionGeografica> ubicacionGeograficaList;
-    @JoinColumn(name = "cod_ubicacion_geo_padre", referencedColumnName = "cod_ubicacion_geo_int")
+    @JoinColumn(name = "cod_ubicacion_geo_padre", referencedColumnName = "cod_ubicacion_geo_int", nullable = false, insertable = false, updatable = false)
     @ManyToOne
-    private UbicacionGeografica codUbicacionGeoPadre;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lugarNacimiento")
-    private List<Persona> personaList;
+    private UbicacionGeografica ubicacionGeoPadre;
 
     public UbicacionGeografica() {
     }
@@ -83,12 +85,36 @@ public class UbicacionGeografica implements Serializable {
         this.codUbicacionGeoInt = codUbicacionGeoInt;
     }
 
+    public String getCodPais() {
+        return codPais;
+    }
+
+    public void setCodPais(String codPais) {
+        this.codPais = codPais;
+    }
+
+    public Short getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(Short nivel) {
+        this.nivel = nivel;
+    }
+
     public String getCodUbicacionGeografica() {
         return codUbicacionGeografica;
     }
 
     public void setCodUbicacionGeografica(String codUbicacionGeografica) {
         this.codUbicacionGeografica = codUbicacionGeografica;
+    }
+
+    public Integer getCodUbicacionGeoPadre() {
+        return codUbicacionGeoPadre;
+    }
+
+    public void setCodUbicacionGeoPadre(Integer codUbicacionGeoPadre) {
+        this.codUbicacionGeoPadre = codUbicacionGeoPadre;
     }
 
     public String getNombre() {
@@ -163,12 +189,12 @@ public class UbicacionGeografica implements Serializable {
         this.institucionList = institucionList;
     }
 
-    public Pais getCodPais() {
-        return codPais;
+    public Pais getPais() {
+        return pais;
     }
 
-    public void setCodPais(Pais codPais) {
-        this.codPais = codPais;
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
 
     public PaisEstructura getPaisEstructura() {
@@ -187,20 +213,12 @@ public class UbicacionGeografica implements Serializable {
         this.ubicacionGeograficaList = ubicacionGeograficaList;
     }
 
-    public UbicacionGeografica getCodUbicacionGeoPadre() {
-        return codUbicacionGeoPadre;
+    public UbicacionGeografica getUbicacionGeoPadre() {
+        return ubicacionGeoPadre;
     }
 
-    public void setCodUbicacionGeoPadre(UbicacionGeografica codUbicacionGeoPadre) {
-        this.codUbicacionGeoPadre = codUbicacionGeoPadre;
-    }
-
-    public List<Persona> getPersonaList() {
-        return personaList;
-    }
-
-    public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
+    public void setUbicacionGeoPadre(UbicacionGeografica ubicacionGeoPadre) {
+        this.ubicacionGeoPadre = ubicacionGeoPadre;
     }
 
     @Override
@@ -212,7 +230,7 @@ public class UbicacionGeografica implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-
+        
         if (!(object instanceof UbicacionGeografica)) {
             return false;
         }
@@ -227,5 +245,5 @@ public class UbicacionGeografica implements Serializable {
     public String toString() {
         return "[ codUbicacionGeoInt=" + codUbicacionGeoInt + " ]";
     }
-
+    
 }

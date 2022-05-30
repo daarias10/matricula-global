@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 User.
+ * Copyright 2022 Bryan.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,11 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ec.edu.espe.arquitectura.matriculaglobal.seguridad.dao;
-import ec.edu.espe.arquitectura.matriculaglobal.seguridad.model.Modulo;
+package ec.edu.espe.arquitectura.matriculaglobal.persona.dao;
+
+import ec.edu.espe.arquitectura.matriculaglobal.persona.model.HistTipoPersona;
+import ec.edu.espe.arquitectura.matriculaglobal.persona.model.HistTipoPersonaPK;
+import java.util.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ModuloRepository extends JpaRepository<Modulo, String> {
-    List<Modulo> findByEstado(String estado);
+public interface HistTipoPersonaRepository extends JpaRepository<HistTipoPersona, HistTipoPersonaPK>{
+     List<HistTipoPersona> findByCodUsuarioIniAndFechaInicioGreaterThan (String codUsuarioIni, Date fechaInicio);
+     List<HistTipoPersona> findByCodUsuarioFinAndFechaFinGreaterThan (String codUsuarioFin, Date fechaFin);
 }

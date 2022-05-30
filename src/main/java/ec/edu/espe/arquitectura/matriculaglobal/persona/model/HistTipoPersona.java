@@ -25,7 +25,7 @@ public class HistTipoPersona implements Serializable {
 
     private static final long serialVersionUID = 134543L;
     @EmbeddedId
-    protected HistTipoPersonaPK histTipoPersonaPK;
+    private HistTipoPersonaPK pk;
     @Column(name = "fecha_inicio", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaInicio;
@@ -56,15 +56,15 @@ public class HistTipoPersona implements Serializable {
     }
 
     public HistTipoPersona(int codPersona, String codTipoPersona) {
-        this.histTipoPersonaPK = new HistTipoPersonaPK(codPersona, codTipoPersona);
+        this.pk = new HistTipoPersonaPK(codPersona, codTipoPersona);
     }
 
     public HistTipoPersonaPK getHistTipoPersonaPK() {
-        return histTipoPersonaPK;
+        return pk;
     }
 
-    public void setHistTipoPersonaPK(HistTipoPersonaPK histTipoPersonaPK) {
-        this.histTipoPersonaPK = histTipoPersonaPK;
+    public void setHistTipoPersonaPK(HistTipoPersonaPK pk) {
+        this.pk = pk;
     }
 
     public Date getFechaInicio() {
@@ -150,7 +150,7 @@ public class HistTipoPersona implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (histTipoPersonaPK != null ? histTipoPersonaPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -160,7 +160,7 @@ public class HistTipoPersona implements Serializable {
             return false;
         }
         HistTipoPersona other = (HistTipoPersona) object;
-        if ((this.histTipoPersonaPK == null && other.histTipoPersonaPK != null) || (this.histTipoPersonaPK != null && !this.histTipoPersonaPK.equals(other.histTipoPersonaPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -168,7 +168,7 @@ public class HistTipoPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "histTipoPersona[ histTipoPersonaPK=" + histTipoPersonaPK + " ]";
+        return "histTipoPersona[ pk=" + pk + " ]";
     }
     
 }

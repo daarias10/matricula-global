@@ -26,7 +26,7 @@ public class PerfilFuncionalidad implements Serializable {
 
     private static final long serialVersionUID = 12312L;
     @EmbeddedId
-    protected PerfilFuncionalidadPK perfilFuncionalidadPK;
+    private PerfilFuncionalidadPK pk;
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
     @Column(name = "aud_fecha", nullable = false)
@@ -47,15 +47,15 @@ public class PerfilFuncionalidad implements Serializable {
     }
 
     public PerfilFuncionalidad(String codPerfil, int codFuncionalidad) {
-        this.perfilFuncionalidadPK = new PerfilFuncionalidadPK(codPerfil, codFuncionalidad);
+        this.pk = new PerfilFuncionalidadPK(codPerfil, codFuncionalidad);
     }
 
     public PerfilFuncionalidadPK getPerfilFuncionalidadPK() {
-        return perfilFuncionalidadPK;
+        return pk;
     }
 
     public void setPerfilFuncionalidadPK(PerfilFuncionalidadPK PerfilFuncionalidadPK) {
-        this.perfilFuncionalidadPK = PerfilFuncionalidadPK;
+        this.pk = PerfilFuncionalidadPK;
     }
 
     public String getAudUsuario() {
@@ -109,7 +109,7 @@ public class PerfilFuncionalidad implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (perfilFuncionalidadPK != null ? perfilFuncionalidadPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -119,7 +119,7 @@ public class PerfilFuncionalidad implements Serializable {
             return false;
         }
         PerfilFuncionalidad other = (PerfilFuncionalidad) object;
-        if ((this.perfilFuncionalidadPK == null && other.perfilFuncionalidadPK != null) || (this.perfilFuncionalidadPK != null && !this.perfilFuncionalidadPK.equals(other.perfilFuncionalidadPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -127,7 +127,7 @@ public class PerfilFuncionalidad implements Serializable {
 
     @Override
     public String toString() {
-        return "[ PerfilFuncionalidadPK=" + perfilFuncionalidadPK + " ]";
+        return "[ PerfilFuncionalidadPK=" + pk + " ]";
     }
     
 }

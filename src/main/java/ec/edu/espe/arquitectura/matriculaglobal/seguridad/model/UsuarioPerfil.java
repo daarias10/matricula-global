@@ -26,7 +26,7 @@ public class UsuarioPerfil implements Serializable {
 
     private static final long serialVersionUID = 165465L;
     @EmbeddedId
-    protected UsuarioPerfilPK usuarioPerfilPK;
+    private UsuarioPerfilPK pk;
     @Column(name = "aud_usuario", nullable = false, length = 30)
     private String audUsuario;
     @Column(name = "aud_fecha", nullable = false)
@@ -47,15 +47,15 @@ public class UsuarioPerfil implements Serializable {
     }
     
     public UsuarioPerfil(String codUsuario, String codPerfil) {
-        this.usuarioPerfilPK = new UsuarioPerfilPK(codUsuario, codPerfil);
+        this.pk = new UsuarioPerfilPK(codUsuario, codPerfil);
     }
 
     public UsuarioPerfilPK getUsuarioPerfilPK() {
-        return usuarioPerfilPK;
+        return pk;
     }
 
     public void setUsuarioPerfilPK(UsuarioPerfilPK UsuarioPerfilPK) {
-        this.usuarioPerfilPK = UsuarioPerfilPK;
+        this.pk = UsuarioPerfilPK;
     }
 
     public String getAudUsuario() {
@@ -109,7 +109,7 @@ public class UsuarioPerfil implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (usuarioPerfilPK != null ? usuarioPerfilPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -119,7 +119,7 @@ public class UsuarioPerfil implements Serializable {
             return false;
         }
         UsuarioPerfil other = (UsuarioPerfil) object;
-        if ((this.usuarioPerfilPK == null && other.usuarioPerfilPK != null) || (this.usuarioPerfilPK != null && !this.usuarioPerfilPK.equals(other.usuarioPerfilPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -127,7 +127,7 @@ public class UsuarioPerfil implements Serializable {
 
     @Override
     public String toString() {
-        return "[ UsuarioPerfilPK=" + usuarioPerfilPK + " ]";
+        return "[ UsuarioPerfilPK=" + pk + " ]";
     }
     
 }

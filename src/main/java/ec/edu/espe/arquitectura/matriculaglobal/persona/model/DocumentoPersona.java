@@ -25,7 +25,7 @@ public class DocumentoPersona implements Serializable {
 
     private static final long serialVersionUID = 12233L;
     @EmbeddedId
-    protected DocumentoPersonaPK documentoPersonaPK;
+    private DocumentoPersonaPK pk;
     @Column(name = "estado", nullable = false, length = 3)
     private String estado;
     @Column(name = "fecha_registro", nullable = false)
@@ -63,15 +63,15 @@ public class DocumentoPersona implements Serializable {
     }
 
     public DocumentoPersona(int codPersona, String codTipoDocumento) {
-        this.documentoPersonaPK = new DocumentoPersonaPK(codPersona, codTipoDocumento);
+        this.pk = new DocumentoPersonaPK(codPersona, codTipoDocumento);
     }
 
     public DocumentoPersonaPK getDocumentoPersonaPK() {
-        return documentoPersonaPK;
+        return pk;
     }
 
-    public void setDocumentoPersonaPK(DocumentoPersonaPK perDocumentoPersonaPK) {
-        this.documentoPersonaPK = documentoPersonaPK;
+    public void setDocumentoPersonaPK(DocumentoPersonaPK pk) {
+        this.pk = pk;
     }
 
     public String getEstado() {
@@ -181,7 +181,7 @@ public class DocumentoPersona implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (documentoPersonaPK != null ? documentoPersonaPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -191,7 +191,7 @@ public class DocumentoPersona implements Serializable {
             return false;
         }
         DocumentoPersona other = (DocumentoPersona) object;
-        if ((this.documentoPersonaPK == null && other.documentoPersonaPK != null) || (this.documentoPersonaPK != null && !this.documentoPersonaPK.equals(other.documentoPersonaPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -199,7 +199,7 @@ public class DocumentoPersona implements Serializable {
 
     @Override
     public String toString() {
-        return "documentoPersona[ documentoPersonaPK=" + documentoPersonaPK + " ]";
+        return "documentoPersona[ pk=" + pk + " ]";
     }
     
 }

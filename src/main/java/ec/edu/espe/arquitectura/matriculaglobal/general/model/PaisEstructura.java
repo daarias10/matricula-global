@@ -26,7 +26,7 @@ public class PaisEstructura implements Serializable {
 
     private static final long serialVersionUID = 87971L;
     @EmbeddedId
-    protected PaisEstructuraPK paisEstructuraPK;
+    private PaisEstructuraPK pk;
     @Column(name = "nombre", nullable = false, length = 64)
     private String nombre;
     @Column(name = "aud_usuario", nullable = false, length = 30)
@@ -47,20 +47,16 @@ public class PaisEstructura implements Serializable {
     public PaisEstructura() {
     }
 
-    public PaisEstructura(PaisEstructuraPK paisEstructuraPK) {
-        this.paisEstructuraPK = paisEstructuraPK;
+    public PaisEstructura(PaisEstructuraPK pk) {
+        this.pk = pk;
     }
 
-    public PaisEstructura(String codPais, short nivel) {
-        this.paisEstructuraPK = new PaisEstructuraPK(codPais, nivel);
+    public PaisEstructuraPK getPk() {
+        return pk;
     }
 
-    public PaisEstructuraPK getPaisEstructuraPK() {
-        return paisEstructuraPK;
-    }
-
-    public void setPaisEstructuraPK(PaisEstructuraPK paisEstructuraPK) {
-        this.paisEstructuraPK = paisEstructuraPK;
+    public void setPk(PaisEstructuraPK pk) {
+        this.pk = pk;
     }
 
     public String getNombre() {
@@ -122,7 +118,7 @@ public class PaisEstructura implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (paisEstructuraPK != null ? paisEstructuraPK.hashCode() : 0);
+        hash += (pk != null ? pk.hashCode() : 0);
         return hash;
     }
 
@@ -133,7 +129,7 @@ public class PaisEstructura implements Serializable {
             return false;
         }
         PaisEstructura other = (PaisEstructura) object;
-        if ((this.paisEstructuraPK == null && other.paisEstructuraPK != null) || (this.paisEstructuraPK != null && !this.paisEstructuraPK.equals(other.paisEstructuraPK))) {
+        if ((this.pk == null && other.pk != null) || (this.pk != null && !this.pk.equals(other.pk))) {
             return false;
         }
         return true;
@@ -141,7 +137,7 @@ public class PaisEstructura implements Serializable {
 
     @Override
     public String toString() {
-        return "[ PaisEstructuraPK=" + paisEstructuraPK + " ]";
+        return "[ PaisEstructuraPK=" + pk + " ]";
     }
     
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright 2022 User.
+ * Copyright 2022 Bryan.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,14 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ec.edu.espe.arquitectura.matriculaglobal.educacion.dao;
+package ec.edu.espe.arquitectura.matriculaglobal.persona.dao;
 
-import ec.edu.espe.arquitectura.matriculaglobal.educacion.model.Departamento;
+import ec.edu.espe.arquitectura.matriculaglobal.persona.model.TipoPersona;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface DepartamentoRepository extends JpaRepository<Departamento, Integer> {
-    Departamento findByNombreLike(String nombre);
-    List<Departamento> findBySiglasLike(String siglas);
+public interface TipoPersonaRepository extends JpaRepository<TipoPersona, String>{
+    List<TipoPersona> findByEstado(String estado);
 }

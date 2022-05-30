@@ -13,14 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ec.edu.espe.arquitectura.matriculaglobal.educacion.dao;
+package ec.edu.espe.arquitectura.matriculaglobal.seguridad.dao;
 
-import ec.edu.espe.arquitectura.matriculaglobal.educacion.model.Departamento;
+import ec.edu.espe.arquitectura.matriculaglobal.seguridad.model.UsuarioPerfil;
+import ec.edu.espe.arquitectura.matriculaglobal.seguridad.model.UsuarioPerfilPK;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface DepartamentoRepository extends JpaRepository<Departamento, Integer> {
-    Departamento findByNombreLike(String nombre);
-    List<Departamento> findBySiglasLike(String siglas);
+public interface UsuarioPerfilRespository extends JpaRepository<UsuarioPerfil, UsuarioPerfilPK>{
+    
 }

@@ -17,7 +17,6 @@ package ec.edu.espe.arquitectura.matriculaglobal.persona.model;
 
 import ec.edu.espe.arquitectura.matriculaglobal.general.model.Pais;
 import ec.edu.espe.arquitectura.matriculaglobal.general.model.UbicacionGeografica;
-import ec.edu.espe.arquitectura.matriculaglobal.educacion.model.Nrc;
 import ec.edu.espe.arquitectura.matriculaglobal.educacion.model.Matricula;
 import java.io.Serializable;
 import java.util.Date;
@@ -85,8 +84,6 @@ public class Persona implements Serializable {
     private String audIp;
     @Column(name = "version", nullable = false)
     private int version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codPersona")
-    private List<Nrc> nrcList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
     private List<DireccionPersona> direccionPersonaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "persona")
@@ -327,15 +324,7 @@ public class Persona implements Serializable {
     public void setVersion(int version) {
         this.version = version;
     }
-
-    public List<Nrc> getNrcList() {
-        return nrcList;
-    }
-
-    public void setNrcList(List<Nrc> nrcList) {
-        this.nrcList = nrcList;
-    }
-
+    
     public List<DireccionPersona> getDireccionPersonaList() {
         return direccionPersonaList;
     }
