@@ -12,7 +12,7 @@
 	<artifactId>matricula-global</artifactId>
 	<version>1</version>
 	<name>matricula-global</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Aplicacion escolastica</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
