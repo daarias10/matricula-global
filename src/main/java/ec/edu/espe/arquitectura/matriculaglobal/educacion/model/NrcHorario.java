@@ -16,6 +16,7 @@
 package ec.edu.espe.arquitectura.matriculaglobal.educacion.model;
 
 import ec.edu.espe.arquitectura.matriculaglobal.orgfisica.model.Aula;
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
@@ -28,19 +29,19 @@ public class NrcHorario implements Serializable {
     private static final long serialVersionUID = 12345L;
     @EmbeddedId
     private NrcHorarioPK pk;
-    
+
     @Column(name = "hora_inicio", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date horaInicio;
-    
+
     @Column(name = "hora_fin", nullable = false)
     @Temporal(TemporalType.TIME)
     private Date horaFin;
     @JoinColumns({
-        @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
-        @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false)})
+            @JoinColumn(name = "cod_nrc", referencedColumnName = "cod_nrc", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_periodo", referencedColumnName = "cod_periodo", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_departamento", referencedColumnName = "cod_departamento", nullable = false, insertable = false, updatable = false),
+            @JoinColumn(name = "cod_materia", referencedColumnName = "cod_materia", nullable = false, insertable = false, updatable = false)})
     @ManyToOne(optional = false)
     private Nrc nrc;
     @JoinColumn(name = "cod_aula", referencedColumnName = "cod_aula", nullable = false, insertable = false, updatable = false)
@@ -52,10 +53,6 @@ public class NrcHorario implements Serializable {
 
     public NrcHorario(NrcHorarioPK nrcHorarioPK) {
         this.pk = nrcHorarioPK;
-    }
-
-    public NrcHorario(short codNrc, int codPeriodo, int codDepartamento, int codMateria, int codAula, String diaSemana) {
-        this.pk = new NrcHorarioPK(codNrc, codPeriodo, codDepartamento, codMateria, codAula, diaSemana);
     }
 
     public NrcHorarioPK getPk() {
@@ -107,7 +104,7 @@ public class NrcHorario implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        
+
         if (!(object instanceof NrcHorario)) {
             return false;
         }
@@ -122,5 +119,5 @@ public class NrcHorario implements Serializable {
     public String toString() {
         return "[ nrcHorarioPK=" + pk + " ]";
     }
-    
+
 }

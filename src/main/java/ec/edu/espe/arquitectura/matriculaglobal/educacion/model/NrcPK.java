@@ -23,26 +23,18 @@ public class NrcPK implements Serializable {
 
     @Column(name = "cod_nrc", nullable = false)
     private short codNrc;
-    
+
     @Column(name = "cod_periodo", nullable = false)
     private int codPeriodo;
-    
+
     @Column(name = "cod_departamento", nullable = false)
     private int codDepartamento;
-    
+
     @Column(name = "cod_materia", nullable = false)
     private int codMateria;
 
     public NrcPK() {
     }
-
-    public NrcPK(short codNrc, int codPeriodo, int codDepartamento, int codMateria) {
-        this.codNrc = codNrc;
-        this.codPeriodo = codPeriodo;
-        this.codDepartamento = codDepartamento;
-        this.codMateria = codMateria;
-    }
-
     public short getCodNrc() {
         return codNrc;
     }
@@ -87,7 +79,7 @@ public class NrcPK implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        
+
         if (!(object instanceof NrcPK)) {
             return false;
         }
@@ -111,5 +103,5 @@ public class NrcPK implements Serializable {
     public String toString() {
         return "[ codNrc=" + codNrc + ", codPeriodo=" + codPeriodo + ", codDepartamento=" + codDepartamento + ", codMateria=" + codMateria + " ]";
     }
-    
+
 }

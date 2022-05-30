@@ -126,7 +126,7 @@ public class Periodo implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        
+
         if (!(object instanceof Periodo)) {
             return false;
         }
@@ -141,5 +141,5 @@ public class Periodo implements Serializable {
     public String toString() {
         return "[ codPeriodo=" + codPeriodo + " ]";
     }
-    
+
 }

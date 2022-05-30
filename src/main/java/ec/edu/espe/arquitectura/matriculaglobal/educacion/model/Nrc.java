@@ -58,10 +58,6 @@ public class Nrc implements Serializable {
         this.pk = nrcPK;
     }
 
-    public Nrc(short codNrc, int codPeriodo, int codDepartamento, int codMateria) {
-        this.pk = new NrcPK(codNrc, codPeriodo, codDepartamento, codMateria);
-    }
-
     public NrcPK getPk() {
         return pk;
     }
